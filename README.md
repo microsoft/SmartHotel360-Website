@@ -8,6 +8,15 @@ Once downloaded you can open the `SmartHotel360.PublicWebSite.sln` file to open 
 * The SmartHotel360.PublicWeb project: A asp.net core2 website which is a SPA webapp developed using React+Redux and server-side rendering.
 * The PetCheckerFunction project: An Azure function used for the "bring your per scenario".
 
+## Screens
+
+
+<img src="./doc/screen2.png" Height="350" />
+<img src="./doc/screen4.png" Height="350" />
+<img src="./doc/screen3.png" Height="350" />
+<img src="./doc/screen1.png" Height="350" />
+<img src="./doc/screen5.png" Height="350" />
+
 ## Running the web
 
 Just set `SmartHotel360.PublicWeb` as startup project. Then hit F5, and the web should run. The web is configured to use the public endpoints for the backend, so you don't need to run the backend locally.
