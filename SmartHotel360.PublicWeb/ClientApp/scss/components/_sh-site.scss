@@ -1,0 +1,9 @@
+@import '../base/variables';
+
+.sh-site {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}

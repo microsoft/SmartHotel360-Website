@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "func_splan_name": {
+      "value": "sh360websvcfunc"
+    },
+    "funcapp_name": {
+      "value": "sh360webfuncapp"
+    },
+    "funcapp_storage_name": {
+      "value": "sh360strfuncapp"
+    },
+    "vision_name": {
+      "value": "sh360-vision-"
+    },
+    "svcPlanSize":{
+      "value": "Y1"
+    },
+    "svcFamily": {
+      "value": "Y"
+    },
+    "svcCapacity": {
+      "value": 0
+    },
+    "environment": {
+      "value": "public"
+    },
+    "unique_resources": {
+      "value": true
+    }
+  }
+}

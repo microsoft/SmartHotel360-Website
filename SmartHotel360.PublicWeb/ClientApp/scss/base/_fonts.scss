@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'mixins/fonts';
+
+// Fonts
+@include font-include(FiraSans, Light, $font-weight-light, normal);
+@include font-include(FiraSans, Regular, $font-weight-regular, normal);
+
+@include font-include(Poppins, Medium, $font-weight-medium, normal);
+@include font-include(Poppins, Regular, $font-weight-regular, normal);
+@include font-include(Poppins, SemiBold, $font-weight-semibold, normal);

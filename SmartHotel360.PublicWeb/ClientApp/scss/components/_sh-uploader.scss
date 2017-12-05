@@ -1,0 +1,78 @@
+﻿@import '../base/variables';
+
+.sh-uploader {
+    $size: 9rem;
+
+    align-items: center;
+    background-color: rgba($color-brand, .15);
+    border: 4px solid rgba($color-brand, .1);
+    border-radius: 50%;
+    display: flex;
+    height: $size;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all $animation-speed-slow;
+    width: $size;
+
+    &.is-empty {
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($color-brand, .45);
+            border-color: rgba($color-brand, .3);
+            transition: all $animation-speed-slow;
+        }
+    }
+
+    &.is-loading {
+        animation: is-loading-pet 3s infinite ease-in-out;
+    }
+
+    &.is-bad {
+        background-color: rgba($color-error, .45);
+        border-color: rgba($color-error, .3);
+        transition: all $animation-speed-slow;
+    }
+
+    &.is-ok {
+        background-color: rgba($color-accept, .45);
+        border-color: rgba($color-accept, .3);
+        transition: all $animation-speed-slow;
+    }
+
+    @keyframes is-loading-pet {
+        0%, 100% {
+            background-color: rgba($color-brand, .45);
+            border-color: rgba($color-brand, .3);
+        }
+
+        50% {
+            background-color: rgba($color-brand, .8);
+            border-color: rgba($color-foreground-dark, .3);
+        }
+    }
+
+    &-image,
+    &-avatar {
+        $size: $size * .9;
+        background-image: url('/assets/images/avatar.gif');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: $size;
+        width: $size;
+    }
+
+    &-image {
+        $size: $size * .8;
+
+        background-size: cover;
+        border-radius: 50%;
+        height: $size;
+        width: $size;
+    }
+
+    &-loading {
+        position: absolute;
+    }
+}

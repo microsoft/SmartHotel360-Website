@@ -1,0 +1,66 @@
+﻿@import '../base/variables';
+
+.sh-switch {
+    $switch-height: 1.5rem;
+
+    align-items: center;
+    display: flex;
+
+    &-button {
+        display: inline-block;
+        flex: 0 0 auto;
+        height: $switch-height;
+        position: relative;
+        width: 3rem;
+    }
+
+    &-title {
+        flex: 0 0 auto;
+        font-weight: lighter;
+        padding: 1rem;
+    }
+
+    input {
+        display: none;
+    }
+
+    &-slider {
+        background-color: $color-foreground-bright;
+        border-radius: 2.5rem;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: .4s;
+
+        &:before {
+            background-color: $color-background-brighter;
+            border-radius: 50%;
+            bottom: 4px;
+            content: '';
+            height: calc(#{$switch-height} - .5rem);
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: calc(#{$switch-height} - .5rem);
+        }
+    }
+
+    input:checked + &-slider {
+        background-color: $color-brand-brighter;
+    }
+
+    input:focus + &-slider {
+        box-shadow: 0 0 1px $color-brand-brighter;
+    }
+
+    input:checked + &-slider:before {
+        background-color: $color-brand;
+        transform: translateX(1.5rem);
+    }
+}
+
+
+

@@ -1,0 +1,121 @@
+﻿@import '../base/variables';
+
+.sh-filter {
+    flex: 0 0 auto;
+    padding: 0 .2rem;
+    z-index: 100;
+
+    &.active {
+        z-index: 1000;
+    }
+
+    &-dropdown {
+        background-color: rgba($color-background-brighter, .9);
+        border: 0;
+        border-radius: 3px;
+        box-shadow: 2px 2px 11px rgba($color-foreground-dark, .1);
+        display: none;
+        margin-top: -.5rem;
+        min-width: 25rem;
+        opacity: 0;
+        padding: 2rem 1rem;
+        position: absolute;
+
+        @media screen and (max-width: $media-screen-l) {
+            background-color: $color-background-brighter;
+            left: 5%;
+            width: 90%;
+        }
+
+        &.active {
+            animation: fadeInFrom $animation-speed-default ease-out;
+            display: block;
+            opacity: 1;
+            z-index: 1000;
+
+            @keyframes fadeInFrom {
+                0% {
+                    display: none;
+                    opacity: 0;
+                }
+
+                1% {
+                    display: block;
+                    opacity: 0;
+                }
+
+                100% {
+                    display: block;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        list-style: none;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 2rem;
+        padding: 0;
+    }
+
+    &-arrow &-icon {
+        margin-bottom: .2rem;
+        padding: 0 .4rem;
+        transform: rotate(-180deg);
+    }
+
+    &-header {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        padding: 1rem 0;
+        width: 100%;
+
+        &:hover,
+        &.active {
+            color: $color-brand;
+        }
+
+        &.active {
+            .sh-filter-icon {
+                margin-top: .2rem;
+                transform: rotate(0);
+            }
+        }
+    }
+
+    &-button {
+        cursor: pointer;
+        line-height: 1.5rem;
+        padding: 0 1rem;
+
+        &--cancel,
+        &--apply {
+            opacity: .85;
+
+            &:hover {
+                opacity: 1;
+                transition: opacity $animation-speed-default;
+            }
+        }
+
+        &--cancel {
+            color: $color-foreground-dark;
+            opacity: .65;
+        }
+
+        &--apply {
+            color: $color-brand;
+        }
+    }
+
+    &-title {
+        font-weight: $font-weight-light;
+    }
+}

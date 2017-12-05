@@ -1,0 +1,73 @@
+﻿@import '../base/variables';
+
+.sh-pets {
+    $height: 43rem;
+
+    &-hero {
+        background-image: url('/assets/images/hero_image_pet.jpg');
+        background-size: cover;
+        display: flex;
+        height: $height;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+    }
+
+    &-margin {
+        margin-top: $height * .9;
+    }
+
+    &-wrapper {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &-logo {
+        width: 18rem;
+    }
+
+    &-title,
+    &-subtitle,
+    &-smalltitle {
+        clear: both;
+        display: block;
+        font-size: $font-size-xxl;
+        font-weight: $font-weight-medium;
+        text-align: center;
+        width: 100%;
+    }
+
+    &-title {
+        color: $color-foreground-brighter;
+        line-height: $font-size-xxl * 1.5;
+        margin-top: 3rem;
+        max-width: 42rem;
+    }
+
+    &-subtitle {
+        font-size: $font-size-xl;
+        line-height: $font-size-xl * 1.5;
+        margin: 2rem auto;
+        max-width: 20rem;
+    }
+
+    &-smalltitle {
+        font-size: $font-size-m;
+        font-weight: $font-weight-regular;
+        margin: 2rem auto;
+        max-width: 13rem;
+
+        &.is-bad {
+            color: rgba($color-error, .9);
+        }
+
+        &.is-ok {
+            color: rgba($color-accept, .8);
+        }
+    }
+}

@@ -1,0 +1,297 @@
+﻿@import '../base/variables';
+@import '../mixins/site-margins';
+
+.sh-search {
+    $height: 11rem;
+    @include site-margins;
+    display: block;
+    justify-content: center;
+
+    &-group {
+        $separation: 1.5rem;
+        margin: 1rem 0;
+        position: relative;
+
+        @media screen and (min-width: $media-screen-m) {
+            margin: 1rem $separation;
+
+            &.is-active:before {
+                $size: .5rem;
+                background-color: $color-brand;
+                border-radius: 50%;
+                bottom: -$size;
+                content: '';
+                height: $size;
+                left: 50%;
+                position: absolute;
+                width: $size;
+            }
+        }
+
+        &--button {
+            margin: 1rem auto;
+            position: relative;
+            width: 90%;
+
+            @media screen and (min-width: $media-screen-m) {
+                margin: 0 $separation;
+                width: 20%;
+            }
+        }
+
+        @media screen and (min-width: $media-screen-m) {
+            margin: 0 $separation;
+            width: 33%;
+        }
+    }
+
+    &--info {
+        @media screen and (min-width: $media-screen-m) {
+            height: 4rem;
+        }
+    }
+
+    &--info &-group:first-of-type {
+        @media screen and (min-width: $media-screen-m) {
+            margin-left: 0;
+        }
+    }
+
+    &-wrapper {
+        background-color: $color-background-brighter;
+        border-radius: 4px;
+        box-shadow: 0 0 21px 2px rgba($color-background-darker, .08);
+        height: auto;
+        transform: translateY(-$height/2);
+        width: 100%;
+
+        @media screen and (min-width: $media-screen-m) {
+            height: $height;
+        }
+    }
+
+    &--info &-wrapper {
+        box-shadow: none;
+        height: auto;
+        transform: translateY(0);
+    }
+
+    &-tabs {
+        $margin: 1rem;
+
+        border-bottom: 1px solid $color-foreground-bright;
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        margin-left: $margin;
+        margin-right: $margin;
+    }
+
+    &-tab {
+        $vpadding: 1.5rem;
+        $hpadding: 2rem;
+        $margin: 1rem;
+        $shadow: inset 0 -5px 0;
+
+        box-shadow: $shadow transparent;
+        cursor: pointer;
+        font-size: $font-size-l;
+        margin-left: $margin;
+        margin-right: $margin;
+        padding-bottom: $vpadding;
+        padding-left: $hpadding;
+        padding-right: $hpadding;
+        padding-top: $vpadding;
+
+        &:hover {
+            color: $color-secondary;
+            transition: color $animation-speed-default;
+        }
+
+        &.is-active {
+            box-shadow: $shadow $color-secondary;
+            color: $color-secondary;
+        }
+    }
+
+    &-inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        list-style: none;
+        margin-top: 2rem;
+        padding-left: 0;
+
+        @media screen and (min-width: $media-screen-m) {
+            flex-direction: row;
+        }
+    }
+
+    &--info &-inputs {
+        color: $color-brand;
+        font-weight: $font-weight-medium;
+        justify-content: space-around;
+        padding-top: .5rem;
+    }
+
+    &-input,
+    &-value {
+        cursor: pointer;
+        display: inline-flex;
+        width: 100%;
+    }
+
+    &-input {
+        border: 0;
+        color: $color-foreground-bright;
+        justify-content: center;
+        line-height: 2rem;
+        position: relative;
+        text-align: center;
+
+        &:focus {
+            color: $color-brand;
+            outline: 0;
+        }
+
+        &:focus::placeholder {
+            color: $color-foreground-brighter;
+        }
+
+        &::placeholder,
+        &.is-active {
+            color: $color-brand;
+            font-weight: $font-weight-medium;
+            text-align: center;
+        }
+    }
+
+    &-value {
+        display: none;
+        text-align: center;
+
+        &.is-filled {
+            color: $color-brand;
+            display: block;
+            line-height: 2.3rem;
+        }
+    }
+
+    &-option {
+        border-radius: 20px;
+        cursor: pointer;
+        padding: .5rem 1rem;
+        width: 20rem;
+
+        &:hover {
+            background-color: $color-brand-brighter;
+        }
+    }
+
+    &-options {
+        @include site-margins-remove;
+        background: linear-gradient(to bottom, rgba($color-foreground-darker, 0) 0%, rgba($color-foreground-darker, 0) 85%, rgba($color-foreground-darker, .03) 100%);
+        border-bottom: 2px solid $color-foreground-brighter;
+        display: block;
+        float: left;
+        height: auto;
+        margin: 0 auto;
+        padding-bottom: 1rem;
+        padding-top: 2.5rem;
+        width: 100%;
+
+        &--m {
+            display: none;
+
+            @media screen and (min-width: $media-screen-m) {
+                display: block;
+            }
+        }
+
+        &--s {
+            display: block;
+
+            @media screen and (min-width: $media-screen-m) {
+                display: none;
+            }
+        }
+
+        @media screen and (min-width: $media-screen-m) {
+            flex-direction: row;
+            padding-bottom: 5rem;
+        }
+    }
+
+    &-when {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-buttons {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+    }
+
+    &-calendar_button {
+        background: transparent;
+        margin: 0 .5rem;
+
+        &--highlight {
+            color: $color-brand;
+        }
+
+        &[disabled] {
+            opacity: .4;
+        }
+
+        &:focus,
+        &:active:focus {
+            box-shadow: none;
+            outline: 0;
+        }
+
+        &.isDisabled {
+            color: $color-foreground-dark;
+            cursor: not-allowed;
+            opacity: .4;
+        }
+    }
+
+    &-button {
+        background-color: $color-secondary;
+        border-radius: 0;
+        color: $color-foreground-brighter;
+        display: block;
+        font-size: $font-size-xs;
+        line-height: 2.5rem;
+        margin: 0 auto;
+        padding: 0 2.5rem;
+        text-transform: uppercase;
+
+        &:hover {
+            background-color: lighten($color-secondary, 10%);
+            color: $color-foreground-brighter;
+            transition: background-color $animation-speed-default ease;
+        }
+
+        &:focus,
+        &:active {
+            box-shadow: none !important;
+            color: $color-foreground-brighter;
+            outline: none !important;
+        }
+
+        &.is-disabled {
+            background-color: $color-background-bright;
+            pointer-events: none;
+        }
+    }
+
+    &-calendar_label {
+        color: $color-brand;
+        display: block;
+        margin: 0 1rem;
+        text-align: center;
+    }
+}

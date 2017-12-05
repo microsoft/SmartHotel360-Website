@@ -1,0 +1,72 @@
+@import '../base/variables';
+@import '../base/common';
+
+.sh-nav_menu {
+    $distance-left: 2rem;
+    $distance-top: 2rem;
+
+    background-color: $color-brand-dark;
+    display: flex;
+    height: 6rem;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+
+    &.is-home {
+        background-color: transparent;
+        height: 5rem + $distance-top * 2;
+        position: absolute;
+        top: 0;
+        z-index: 1000;
+    }
+
+    &-container {
+        display: flex;
+
+        @media screen and (max-width: $media-screen-s) {
+            overflow: hidden;
+            width: 5.25rem;
+        }
+    }
+
+    &-logo {
+        height: auto;
+        margin-left: $distance-left;
+        width: 12rem;
+
+        @media screen and (min-width: $media-screen-m) {
+            margin-left: 4rem;
+        }
+
+        &.is-home {
+            margin-left: $distance-left;
+            width: 11rem;
+
+            @media screen and (min-width: $media-screen-m) {
+                margin-left: 4rem;
+                width: 18rem;
+            }
+
+            @media screen and (max-width: $media-screen-m) {
+                margin-left: $distance-left;
+                width: 13rem;
+            }
+
+            @media screen and (max-width: $media-screen-m) {
+                width: 10rem;
+            }
+        }
+    }
+
+    &-links {
+        align-items: center;
+        color: $color-foreground-brighter;
+        display: flex;
+        list-style: none;
+        margin-right: 5vw;
+    }
+
+    &-link {
+        @include menu-links;
+    }
+}

@@ -1,0 +1,38 @@
+﻿@import '../base/variables';
+
+.sh-filter_rating {
+    direction: rtl;
+    font-size: 0;
+    margin-right: 2rem;
+    min-width: 7rem;
+
+    &-star {
+        color: $color-foreground-bright;
+        cursor: pointer;
+        display: inline-block;
+        font-size: $font-size-s;
+        margin: -.4rem .2rem;
+
+        &.is-active,
+        &.is-active ~ & {
+            color: $color-brand;
+            transition: color $animation-speed-default;
+        }
+
+        &:hover,
+        &:hover ~ & {
+            color: $color-brand-brighter !important;
+            transition: color $animation-speed-default;
+        }
+
+        &:active,
+        &:active ~ & {
+            color: rgba($color-brand, .6) !important;
+            transition: color $animation-speed-default;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

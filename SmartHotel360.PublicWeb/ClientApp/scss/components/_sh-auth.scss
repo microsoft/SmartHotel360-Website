@@ -1,0 +1,56 @@
+@import '../base/variables';
+@import '../base/common';
+
+.sh-auth {
+
+    @media screen and (max-width: $media-screen-m) {
+        font-size: $font-size-s;
+    }
+
+    @media screen and (max-width: $media-screen-s) {
+        font-size: $font-size-xs;
+    }
+
+    &-group {
+        align-items: center;
+        display: flex;
+    }
+
+    &-link {
+        @include menu-links;
+        align-items: center;
+        align-self: flex-end;
+        display: flex;
+        font-size: .85em;
+    }
+
+    &-profile {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-right: 1vw;
+    }
+
+    &-name {
+        $margin: 1rem;
+
+        margin-left: $margin;
+        text-align: right;
+        white-space: pre-wrap;
+    }
+
+    &-picture {
+        border: 2px solid $color-background-brighter;
+        border-radius: 50%;
+        image-rendering: optimize-contrast;
+        width: 4rem;
+
+        @media screen and (max-width: $media-screen-m) {
+            width: 3rem;
+        }
+
+        @media screen and (max-width: $media-screen-s) {
+            width: 1.5rem;
+        }
+    }
+}

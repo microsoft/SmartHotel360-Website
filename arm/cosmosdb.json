@@ -1,0 +1,86 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "cosmosdb_name": {
+            "type": "string"
+        },
+        "twitter_graph_name": {
+            "type": "string"
+        },
+        "textanalytics_name": {
+            "type": "string"
+        },        
+        "unique_resources": {
+            "type": "bool"
+          },
+          "environment": {
+            "type": "string"
+          }
+    },
+    "variables": {
+        "unique_str": "[if(parameters('unique_resources'),uniqueString(resourceGroup().id), '')]",
+        "suffix": "[concat(parameters('environment'), variables('unique_str'))]",
+        "cosmosdb_name": "[concat(parameters('cosmosdb_name'),variables('suffix'))]",
+        "twitter_graph_name": "[concat(parameters('twitter_graph_name'),variables('suffix'))]",
+        "textanalytics_name": "[concat(parameters('textanalytics_name'),variables('suffix'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "kind": "GlobalDocumentDB",
+            "name": "[variables('cosmosdb_name')]",
+            "apiVersion": "2015-04-08",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "defaultExperience": "DocumentDB"
+            },
+            "scale": null,
+            "properties": {
+                "databaseAccountOfferType": "Standard",
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session",
+                    "maxIntervalInSeconds": 5,
+                    "maxStalenessPrefix": 100
+                },
+                "name": "[variables('cosmosdb_name')]"
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "kind": "GlobalDocumentDB",
+            "name": "[variables('twitter_graph_name')]",
+            "apiVersion": "2015-04-08",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "defaultExperience": "Graph"
+            },
+            "scale": null,
+            "properties": {
+                "databaseAccountOfferType": "Standard",
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session",
+                    "maxIntervalInSeconds": 5,
+                    "maxStalenessPrefix": 100
+                },
+                "name": "[variables('twitter_graph_name')]"
+            },
+            "dependsOn": []
+        },
+
+        {
+            "type": "Microsoft.CognitiveServices/accounts",
+            "sku": {
+                "name": "F0"
+            },
+            "kind": "TextAnalytics",
+            "name": "[parameters('textanalytics_name')]",
+            "apiVersion": "2016-02-01-preview",
+            "location": "[resourceGroup().location]",
+            "scale": null,
+            "properties": {},
+            "dependsOn": []
+        }        
+    ]
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serverfarm_name": {
+      "type": "string"
+    },
+    "website_name": {
+      "type": "string"
+    },
+    "web_settings_url": {
+      "type": "string"
+    },
+    "web_azure_function": {
+      "type": "string"
+    },
+    "svcPlanSize": {
+			"type": "string",
+			"metadata": {
+				"description": "The instance size of the App Service Plan."
+			}
+		},
+    "svcPlanSku": {
+			"type": "string",
+			"allowedValues": [
+				"Free",
+				"Shared",
+				"Basic",
+				"Standard",
+				"Premium"
+			],
+			"metadata": {
+        "description": "The pricing tier of the App Service plan."
+      }
+		},
+    "unique_resources": {
+      "type": "bool"
+    },
+    "environment": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "unique_str": "[if(parameters('unique_resources'),uniqueString(resourceGroup().id), '')]",
+    "suffix": "[concat(parameters('environment'), variables('unique_str'))]",
+    "serverfarm_name": "[concat(parameters('serverfarm_name'),variables('suffix'))]",
+    "website_name": "[concat(parameters('website_name'),variables('suffix'))]",
+    "insights_name":"[concat('insights', variables('website_name'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2015-08-01",
+      "name": "[variables('serverfarm_name')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "[parameters('svcPlanSize')]",
+        "tier": "[parameters('svcPlanSku')]",
+        "capacity": 1
+      },
+      "tags": {
+        "displayName": "ServicePlan for web"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "kind": "app",
+      "name": "[variables('website_name')]",
+      "apiVersion": "2015-08-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('website_name')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_name'))]"
+      },
+      "tags": {
+        "displayName": "WebApp for Public Web"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_name'))]",
+        "[resourceId('microsoft.insights/components/', variables('insights_name'))]"
+      ],
+      "resources": [
+        {
+          "apiVersion": "2015-08-01",
+          "name": "Microsoft.ApplicationInsights.AzureWebSites",
+          "type": "siteextensions",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/Sites', variables('website_name'))]"
+          ],
+          "properties": { }
+        },        
+        {
+          "apiVersion": "2015-08-01",
+          "name": "appsettings",
+          "type": "config",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/Sites', variables('website_name'))]"
+          ],
+          "properties": {
+              "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', variables('insights_name'))).InstrumentationKey]",
+              "USE_NULL_TESTIMONIALS_SERVICE": "use",
+              "WEBSITE_NODE_DEFAULT_VERSION": "6.9.1",
+              "SettingsUrl": "[parameters('web_settings_url')]",
+              "AzureFunction": "[parameters('web_azure_function')]"
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "2015-05-01",
+      "name": "[variables('insights_name')]",
+      "type": "Microsoft.Insights/components",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "[concat('hidden-link:', resourceId('Microsoft.Web/sites', variables('website_name')))]": "Resource",
+        "displayName": "AppInsightsComponent Public Web"
+      },
+      "properties": {
+        "ApplicationId": "[variables('website_name')]"
+      }
+    }
+  ]
+}

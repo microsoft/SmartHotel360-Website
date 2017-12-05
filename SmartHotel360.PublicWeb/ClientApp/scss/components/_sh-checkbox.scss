@@ -1,0 +1,45 @@
+﻿@import '../base/variables';
+
+.sh-checkbox {
+    margin: .8rem;
+    padding: 0 1rem;
+    position: relative;
+
+    &-label {
+        $size: 1.125rem;
+        background: rgba($color-foreground-bright, .5);
+        border-radius: 2px;
+        cursor: pointer;
+        height: $size;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: $size;
+
+        &:before {
+            background: transparent;
+            color: $color-brand;
+            display: block;
+            font-size: .6rem;
+            opacity: 0;
+            padding-left: .11rem;
+            padding-top: .35rem;
+        }
+    }
+
+    &:hover &-label:before {
+        opacity: .5;
+    }
+
+    &-input:checked ~ &-label:before {
+        opacity: 1;
+    }
+
+    &-name {
+        display: block;
+        font-size: $font-size-s;
+        font-weight: $font-weight-medium;
+        line-height: 1rem;
+        margin-left: .5rem;
+    }
+}

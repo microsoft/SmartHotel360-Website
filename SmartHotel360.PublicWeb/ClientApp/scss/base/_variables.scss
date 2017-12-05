@@ -1,0 +1,76 @@
+// Colors
+$color-brand: #378D93;
+$color-brand-dark: #203447;
+$color-brand-bright: #D1E9FF;
+$color-brand-brighter: #D8E9EA;
+$color-secondary: #BC4C1B;
+$color-secondary-bright: #D97F56;
+$color-secondary-brighter: #E8E1D6;
+$color-background-dark: #253748;
+$color-background-darker: #000000;
+$color-background-bright: #BDC3C8;
+$color-background-brighter: #FFFFFF;
+$color-foreground-dark: #253748;
+$color-foreground-darker: #000000;
+$color-foreground-bright: #DEDEDE;
+$color-foreground-brighter: #FFFFFF;
+
+$color-error: #8E0000;
+$color-accept: #09BFA4;
+
+// Animations
+$animation-speed-default: .35s;
+$animation-speed-slow: .5s;
+$animation-speed-fast: .15s;
+
+// Fonts
+$font-weight-light: 200;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-size-xxs: .56rem; // 9px
+$font-size-xs: .75rem;    // 12px
+$font-size-s: .875rem;    // 14px
+$font-size-m: 1rem;      // 16px
+$font-size-l: 1.125rem;   // 18px
+$font-size-xl: 1.375rem;   // 22px
+$font-size-xxl: 1.75rem;   // 28px
+$font-size-xxxl: 2rem;   // 32px
+$font-size-xxxxl: 2.625rem;   // 42px
+
+// Items
+$item-xs-length: 1;
+$item-xs-size: 90%;
+$item-xs-margin: .25% / $item-xs-length;
+
+$item-s-length: 2;
+$item-s-size: 90% / $item-s-length;
+$item-s-margin: 4% / $item-s-length;
+
+$item-m-length: 2;
+$item-m-size: 80% / $item-m-length;
+$item-m-margin: 4% / $item-m-length;
+
+$item-l-length: 4;
+$item-l-size: 90% / $item-l-length;
+$item-l-margin: 3% / $item-l-length;
+
+$item-xl-length: 4;
+$item-xl-size: 75% / $item-xl-length;
+$item-xl-margin: 3% / $item-xl-length;
+
+
+// Medias
+$media-screen-xxxs: 240px;
+$media-screen-xxs: 360px;
+$media-screen-xs: 480px;
+$media-screen-s: 720px;
+$media-screen-m: 960px;
+$media-screen-l: 1110px;
+$media-screen-xl: 1280px;
+$media-screen-xxl: 1440px;
+$media-screen-xxxl: 1680px;
+
+// Variables for mixins
+$medias: xxs, xs, s, m, l, xl, xxl, xxxl;
+$mediavalues: $media-screen-xxs, $media-screen-xs, $media-screen-s, $media-screen-m, $media-screen-l, $media-screen-xl, $media-screen-xxl, $media-screen-xxxl;

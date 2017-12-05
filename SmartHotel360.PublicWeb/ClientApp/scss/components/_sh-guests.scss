@@ -1,0 +1,250 @@
+﻿@import '../base/variables';
+
+.sh-guests {
+    &-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+
+    &-textarea {
+        background-color: rgba($color-foreground-bright, .5);
+        border-color: transparent;
+        border-radius: 2px;
+        height: 10rem;
+        margin: .8rem;
+        padding: .5rem;
+        resize: none;
+
+        &:focus {
+            outline: $color-foreground-bright;
+        }
+    }
+
+    &-config {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 0 2rem;
+
+        @media screen and (min-width: $media-screen-m) {
+            flex-direction: row;
+        }
+    }
+
+    &-people {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+
+        @media screen and (min-width: $media-screen-m) {
+            width: 35%;
+        }
+
+        @media screen and (min-width: $media-screen-s) and (max-width: $media-screen-m) {
+            width: 70%;
+        }
+    }
+
+    &-people_row {
+        display: flex;
+        margin: 1rem 0;
+        width: 100%;
+    }
+
+    &-description {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+    }
+
+    &-title {
+        font-weight: $font-weight-semibold;
+    }
+
+    &-text {
+        font-size: $font-size-xs;
+    }
+
+    &-link {
+        color: $color-brand;
+        cursor: pointer;
+        font-size: $font-size-xs;
+        text-decoration: underline;
+    }
+
+    &-icon {
+        background-color: $color-brand-brighter;
+        border-radius: 2rem;
+        color: $color-brand;
+        cursor: pointer;
+        height: 2.6rem;
+        line-height: 2.5rem;
+        margin: 0 .5rem;
+        text-align: center;
+        width: 2.6rem;
+    }
+
+    &-rooms {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+
+        @media screen and (min-width: $media-screen-m) {
+            width: 65%;
+        }
+
+        @media screen and (min-width: $media-screen-s) and (max-width: $media-screen-m) {
+            width: 70%;
+        }
+    }
+
+    &-room {
+        align-items: center;
+        border: 1px solid $color-foreground-bright;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 .3rem;
+        padding: 1rem 0;
+        width: 33%;
+
+        &--default {
+            &:hover,
+            &.active {
+                border: 2px solid $color-brand-brighter;
+                box-shadow: 0 0 5px 0 rgba($color-brand-brighter, 1);
+                color: $color-brand;
+            }
+        }
+
+        &.is-active {
+            border: 2px solid $color-brand-brighter;
+            box-shadow: 0 0 5px 0 rgba($color-brand-brighter, 1);
+            color: $color-brand;
+        }
+
+        @media screen and (min-width: $media-screen-l) {
+            margin: 0 1rem;
+        }
+    }
+
+    &-room_icon {
+        $font-size: $font-size-xxxxl * 2;
+
+        font-size: $font-size;
+        height: 5rem;
+        margin: 2rem;
+
+        &--one {
+            font-size: $font-size - 1rem;
+        }
+    }
+
+    &-room_input {
+        border: 0;
+        font-size: $font-size-xxxxl;
+        font-weight: $font-weight-semibold;
+        text-align: center;
+        width: 50%;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    &-room_button {
+        background: transparent;
+        border: 0;
+        width: 3rem;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    &-custom {
+        display: flex;
+        flex-direction: row;
+        height: 9rem;
+        justify-content: center;
+    }
+
+    &-extra {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        line-height: 3rem;
+        margin-top: 2rem;
+        padding: 0 2rem;
+        width: auto;
+
+        @media screen and (min-width: $media-screen-s) and (max-width: $media-screen-m) {
+            width: 90%;
+        }
+    }
+
+    &-extra_button {
+        $size: 3rem;
+        background: transparent;
+        border: 0;
+        border-radius: 5rem;
+        height: $size;
+        margin: 0 .5rem;
+        width: $size;
+
+        &:focus,
+        &:active + &:focus {
+            box-shadow: none;
+            outline: 0;
+        }
+
+        &.is-active {
+            background-color: $color-brand-brighter;
+            color: $color-brand;
+        }
+    }
+
+    &-people_services {
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+    }
+
+
+    &-services {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    &-service {
+        color: $color-background-bright;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        margin: 0 .5rem;
+        text-align: center;
+        width: 20%;
+
+        &:hover,
+        &.is-active {
+            color: $color-brand;
+        }
+    }
+
+
+    &-service_icon {
+        font-size: $font-size-xxxl;
+    }
+
+    &-pets_link {
+        &-hidden {
+            display: none;
+        }
+    }
+}

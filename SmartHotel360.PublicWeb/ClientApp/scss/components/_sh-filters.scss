@@ -1,0 +1,43 @@
+﻿@import '../base/variables';
+@import '../mixins/site-margins';
+
+.sh-filters {
+    position: relative;
+
+    &-container {
+        $border-weight: 1px;
+        $border-color: rgba($color-background-bright, .5);
+
+        @include site-margins;
+        align-items: center;
+        border-bottom: $border-weight solid $border-color;
+        border-top: $border-weight solid $border-color;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: $font-size-s;
+        justify-content: space-between;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding: .5rem 0;
+    }
+
+    &-float {
+        @include site-margins;
+        bottom: -5rem;
+        position: absolute;
+        right: 0;
+    }
+
+    &-icon {
+        color: $color-brand;
+        cursor: pointer;
+        font-size: 2.5rem;
+        opacity: .5;
+
+        &:hover {
+            opacity: 1;
+            transition: opacity $animation-speed-default;
+        }
+    }
+}

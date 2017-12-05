@@ -1,0 +1,45 @@
+﻿@import '../base/variables';
+
+.sh-increment_decrement {
+    display: flex;
+
+    &-button {
+        background-color: $color-brand-brighter;
+        border-radius: 2rem;
+        color: $color-brand;
+        cursor: pointer;
+        height: 2.6rem;
+        line-height: 2rem;
+        margin: 0 .5rem;
+        text-align: center;
+        width: 2.6rem;
+
+        &:hover {
+            background-color: rgba($color-brand, .3);
+            color: $color-brand;
+            transition: background-color $animation-speed-default ease;
+        }
+
+        &:focus,
+        &:active:focus {
+            color: $color-brand;
+            outline: 0;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
+    }
+
+    &-input {
+        background-color: rgba($color-foreground-bright, .5);
+        border: 0;
+        height: 2.5rem;
+        text-align: center;
+        width: 3rem;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+}

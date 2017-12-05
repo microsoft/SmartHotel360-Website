@@ -1,0 +1,23 @@
+﻿@import '../base/variables';
+
+.sh-home {
+    &-title {
+        clear: both;
+        display: block;
+        font-size: $font-size-xxl;
+        font-weight: $font-weight-medium;
+        margin-bottom: 3rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    &-label {
+        clear: both;
+        display: block;
+        font-family: FiraSans;
+        font-size: $font-size-m;
+        font-weight: $font-weight-semibold;
+        text-align: center;
+        width: 100%;
+    }
+}
