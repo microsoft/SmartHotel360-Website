@@ -1,5 +1,21 @@
-# SmartHotel360 - Public Web 
-Welcome to the repository containing the public web site of the SmartHotel360.
+# SmartHotel360
+During our **Connect(); 2017** event this year we presented beautiful app demos using Xamarin.
+
+We are happy to announce the release of SmartHotel360. This release intends to share a simplified version of SmartHotel360 reference sample apps used at Connect(); 2017 Keynotes. If you missed it, you can watch <a href="https://channel9.msdn.com/Events/Connect/2017/K100">Scott Guthrie’s Keynote: Journey to the Intelligent Cloud in Channel 9</a>.
+
+# SmartHotel360 Repos
+For this reference app scenario, we built several consumer and line-of-business apps and an Azure backend. You can find all SmartHotel360 repos in the following locations:
+
+* [SmartHotel360 ](https://github.com/Microsoft/SmartHotel360)
+* [Backend Services](https://github.com/Microsoft/SmartHotel360-Azure-backend)
+* [Public Website](https://github.com/Microsoft/SmartHotel360-public-web)
+* [Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps)
+* [Sentiment Analysis](https://github.com/Microsoft/SmartHotel360-Sentiment-Analysis-App)
+
+**Note:** This document is about the public website
+
+## SmartHotel360 - Public Web 
+Welcome to the repository containing the public web site of the SmartHotel360. SmartHotel360 has multiple apps that share a common Azure backend, including a public website where hotel guests can book a room, smart conference rooms, and even include their accompanying family travelers and their pets! The site was built using ASP.NET Core 2.0. 
 
 # Getting Started
 
@@ -9,8 +25,6 @@ Once downloaded you can open the `SmartHotel360.PublicWebSite.sln` file to open 
 * The PetCheckerFunction project: An Azure Function used to analyze photos of pets using the Congnitive Services Vision API and Azure Cosmos DB.
 
 ## Screens
-
-
 <img src="./doc/screen2.png" Height="350" />
 <img src="./doc/screen4.png" Height="350" />
 <img src="./doc/screen3.png" Height="350" />
