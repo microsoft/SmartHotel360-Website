@@ -38,7 +38,7 @@
     "suffix": "[concat(parameters('environment'), variables('unique_str'))]",
     "func_splan_name": "[concat(parameters('func_splan_name'),variables('suffix'))]",
     "funcapp_name": "[concat(parameters('funcapp_name'),variables('suffix'))]",
-    "funcapp_storage_name": "[concat(parameters('funcapp_storage_name'),variables('suffix'))]",
+    "funcapp_storage_name": "[take(concat(parameters('funcapp_storage_name'),variables('suffix')), 23)]",
     "funcapp_storage_id": "[concat(resourceGroup().id,'/providers/Microsoft.Storage/storageAccounts/', variables('funcapp_storage_name'))]",
     "vision_name": "[concat(parameters('vision_name'),variables('suffix'))]"
   },
