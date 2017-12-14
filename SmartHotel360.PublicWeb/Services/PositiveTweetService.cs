@@ -19,17 +19,13 @@ namespace SmartHotel360.PublicWeb.Services
         }
         public CustomerTestimonial GetTestimonial()
         {
-            using (var client = new HttpClient())
+            var model = new CustomerTestimonial
             {
-                using (var response = client.GetAsync(new Uri(localSettings.Value.AzureFunction)).Result)
-                {
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = response.Content.ReadAsStringAsync().Result;
-                    var model = JsonConvert.DeserializeObject<CustomerTestimonial>(responseBody);
+                CustomerName = "BethMassi",
+                Text = "This hotel is super high tech! I'd recommend it to anyone."
+            }; 
 
-                    return model;
-                }
-            }
+            return model;            
         }
     }
 }

@@ -9,7 +9,6 @@
 
         public bool Production { get; set; }
         public string SettingsUrl { get; set; }
-        public string AzureFunction { get; set; }
         public FakeAuthSettings FakeAuth { get; set; }
     }
 }

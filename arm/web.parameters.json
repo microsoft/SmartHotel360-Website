@@ -15,10 +15,7 @@
       "value": "Free"
     },
     "web_settings_url": {
-      "value": "Put settings Url here"
-    },
-    "web_azure_function": {
-      "value": "Put azure function Url here"
+      "value": "http://sh360services-public.eastus2.cloudapp.azure.com/configuration-api/cfg/public-http"
     },
     "environment": {
       "value": "public"

@@ -102,7 +102,7 @@
       "kind": "ComputerVision",
       "name": "[variables('vision_name')]",
       "apiVersion": "2016-02-01-preview",
-      "location": "eastus2",
+      "location": "[resourceGroup().location]",
       "scale": null,
       "properties": {},
       "dependsOn": []

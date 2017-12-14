@@ -11,10 +11,7 @@
     "web_settings_url": {
       "type": "string"
     },
-    "web_azure_function": {
-      "type": "string"
-    },
-    "svcPlanSize": {
+   "svcPlanSize": {
 			"type": "string",
 			"metadata": {
 				"description": "The instance size of the App Service Plan."
@@ -100,8 +97,7 @@
               "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', variables('insights_name'))).InstrumentationKey]",
               "USE_NULL_TESTIMONIALS_SERVICE": "use",
               "WEBSITE_NODE_DEFAULT_VERSION": "6.9.1",
-              "SettingsUrl": "[parameters('web_settings_url')]",
-              "AzureFunction": "[parameters('web_azure_function')]"
+              "SettingsUrl": "[parameters('web_settings_url')]"
           }
         }
       ]
