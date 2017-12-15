@@ -5,17 +5,11 @@
         "cosmosdb_name": {
             "value": "sh360cosmosdb"
         },
-        "twitter_graph_name": {
-            "value": "twitter-graph"
-        },
         "environment": {
             "value": "public"
         },
         "unique_resources": {
             "value": true
-        },
-        "textanalytics_name": {
-            "value": "sh360_textanalytics"
         }
     }
 }
