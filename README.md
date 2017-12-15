@@ -1,5 +1,4 @@
 # SmartHotel360
-During our **Connect(); 2017** event this year we presented beautiful app demos using Xamarin.
 
 We are happy to announce the release of SmartHotel360. This release intends to share a simplified version of SmartHotel360 reference sample apps used at Connect(); 2017 Keynotes. If you missed it, you can watch <a href="https://channel9.msdn.com/Events/Connect/2017/K100">Scott Guthrie’s Keynote: Journey to the Intelligent Cloud in Channel 9</a>.
 
@@ -8,11 +7,10 @@ For this reference app scenario, we built several consumer and line-of-business 
 
 * [SmartHotel360 ](https://github.com/Microsoft/SmartHotel360)
 * [Backend Services](https://github.com/Microsoft/SmartHotel360-Azure-backend)
-* [Public Website](https://github.com/Microsoft/SmartHotel360-public-web)
+* [Public Website](https://github.com/Microsoft/SmartHotel360-public-web) (this repo)
 * [Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps)
 * [Sentiment Analysis](https://github.com/Microsoft/SmartHotel360-Sentiment-Analysis-App)
 
-**Note:** This document is about the public website
 
 # SmartHotel360 - Public Web 
 Welcome to the repository containing the public web site of the SmartHotel360. SmartHotel360 has multiple apps that share a common Azure backend, including a public website where hotel guests can book a room, smart conference rooms, and even include their accompanying family travelers and their pets! The site was built using ASP.NET Core 2.0. 
@@ -40,13 +38,14 @@ Set `SmartHotel360.PublicWeb` as startup project, then hit F5 to start debugging
 The file `appsettings.Development.json` contains the settings of the web site. By default following options are used:
 
 * `SettingsUrl`: Url of the configuration endpoint. By default it uses the public endpoint service. Only change if you are running your own backend services.
-* `AzureFunction`: Url of the Azure Function used to put positive tweets in the home page. Again, by default it uses the public environment so no setup is necessary here.
 * `FakeAuth`: Contains data to "simulate" the login process. Data is `Name` (name of the user), `UserId` (id of the user), `PicUrl` (url of the user avatar).
 
 > If `FakeAuth` is **not set** the PublicWeb site uses an Azure Active Directory B2C to enable the logins. Please read "[Enabling B2C logins](./doc/b2c.md)" if you want to use B2C logins.
 
+If you want to deploy this application to your own Azure subscription, see [this setup guide](./doc/demo-setup.md) for instructions. 
+
 # Demo Scripts
-There is a detailed step-by-step demo script in the [demoscripts](./demoscripts/) folder of this repo that you can use in your own presentations. 
+There is a detailed step-by-step demo script in the [demoscripts](./demoscripts/) folder of this repo that you can use in your own presentations. In order to perform the demos, you will need to deploy the application resources to Azure first. See [this setup guide](./doc/demo-setup.md) on how to do that. 
 
 # Contributing
 
