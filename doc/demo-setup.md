@@ -107,13 +107,17 @@ To run the Azure Function locally you can use Visual Studio 2017 15.5 or higher 
 
 Now, you should be able to run both the function and the azure function locally and debug it. If it is not working ensure that the configuration is correct. If the Azure Function is not triggered be sure that:
 
-1. The web uses the correct configurations (it should save the images in a blob container called `pets` in your storage)
-2. The [blob container has public access](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-manage-access-to-resources).
-3. The `local.settings` file contains correct values
-4. The web uses the correct configuration (it should create documents in a collection called `checks` in a database `pets`). You can verify this using the Data Explorer. Be sure that the both database and collection exists on Cosmos DB:
+1. The [blob container has public access](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-manage-access-to-resources).
+2. The `local.settings.json` file contains the correct `cosmos_uri`, `cosmos_key` and `constr` values
+3. The web app uses the correct configuration settings from `SettingsUrl`. It should save the images in a blob container called `pets` in your storage. It should also create documents in a collection called `checks` in a database `pets`. You can verify this using the Data Explorer. Be sure that the both database and collection exists on Cosmos DB:
 
 ![Pets document in Cosmos DB](./pets-document.png)
 
 ## Deploying the Function to Azure
 
-Assuming you have the Function app running locally per above instructions, you can use the [Visual Studio 2017 Publish feature to publish the Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs#publish-to-azure). The function will be published using the values of the `local.settings` file. You can change these values in the portal.
+Once you have the Function app running locally per above instructions, you can use the [Visual Studio 2017 Publish feature to publish the Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs#publish-to-azure).  Select publish to an existing Function App and specify your resource group. 
+
+The function will NOT be published with values of the `local.settings.json` file. You need to add these keys manually in the publish wizard the first time you publish. 
+
+![Func App Settings](./funcapp-settings.png)
+
