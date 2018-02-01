@@ -7,8 +7,8 @@ There are two demos that show the power of .NET Core, Visual Studio and Azure. T
 The second demo shows how Application Insights is automatically configured and monitoring the health of your .NET Core apps in Azure App Service. It also shows how to debug production exceptions with the new snapshot debugging. 
 
 In order to show these demos, you need to have the services deployed to your own Azure subscription. The step-by-step demo scripts are available here:
-* [Azure Functions Local Debugging](demoscripts/AzureFunctionsNETCoreDebugging.pdf)
-* [App Service Production Debugging & Application Insights](demoscripts/ProductionNETCoreDebugging.pdf)
+* [Azure Functions Local Debugging](../demoscripts/AzureFunctionsNETCoreDebugging.pdf)
+* [App Service Production Debugging & Application Insights](../demoscripts/ProductionNETCoreDebugging.pdf)
 
 ## Creating the Azure resources
 
