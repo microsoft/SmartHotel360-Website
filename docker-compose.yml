@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  smarthotel360.publicweb:
+    image: smarthotel360.publicweb
+    build:
+      context: ./SmartHotel360.PublicWeb
+      dockerfile: Dockerfile

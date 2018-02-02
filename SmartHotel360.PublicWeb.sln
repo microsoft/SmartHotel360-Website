@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27102.0
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel360.PublicWeb", "SmartHotel360.PublicWeb\SmartHotel360.PublicWeb.csproj", "{03946D5C-C042-40E1-A344-8DBC0FF6403B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetCheckerFunction", "PetCheckerFunction\PetCheckerFunction.csproj", "{534E9CEF-3BD0-4687-842D-D6B2048D6C2D}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B4B459E3-05DC-4F40-9AEA-E30DC3F9EB29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{534E9CEF-3BD0-4687-842D-D6B2048D6C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{534E9CEF-3BD0-4687-842D-D6B2048D6C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{534E9CEF-3BD0-4687-842D-D6B2048D6C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B459E3-05DC-4F40-9AEA-E30DC3F9EB29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B459E3-05DC-4F40-9AEA-E30DC3F9EB29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B459E3-05DC-4F40-9AEA-E30DC3F9EB29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B459E3-05DC-4F40-9AEA-E30DC3F9EB29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
