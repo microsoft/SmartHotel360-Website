@@ -11,25 +11,25 @@
     "web_settings_url": {
       "type": "string"
     },
-   "svcPlanSize": {
-			"type": "string",
-			"metadata": {
-				"description": "The instance size of the App Service Plan."
-			}
-		},
+    "svcPlanSize": {
+      "type": "string",
+      "metadata": {
+        "description": "The instance size of the App Service Plan."
+      }
+    },
     "svcPlanSku": {
-			"type": "string",
-			"allowedValues": [
-				"Free",
-				"Shared",
-				"Basic",
-				"Standard",
-				"Premium"
-			],
-			"metadata": {
+      "type": "string",
+      "allowedValues": [
+        "Free",
+        "Shared",
+        "Basic",
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
         "description": "The pricing tier of the App Service plan."
       }
-		},
+    },
     "unique_resources": {
       "type": "bool"
     },
@@ -42,7 +42,7 @@
     "suffix": "[concat(parameters('environment'), variables('unique_str'))]",
     "serverfarm_name": "[concat(parameters('serverfarm_name'),variables('suffix'))]",
     "website_name": "[concat(parameters('website_name'),variables('suffix'))]",
-    "insights_name":"[concat('insights', variables('website_name'))]"
+    "insights_name": "[concat('insights', variables('website_name'))]"
   },
   "resources": [
     {
@@ -82,22 +82,22 @@
           "name": "Microsoft.ApplicationInsights.AzureWebSites",
           "type": "siteextensions",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/Sites', variables('website_name'))]"
+            "[resourceId('Microsoft.Web/Sites', variables('website_name'))]"
           ],
-          "properties": { }
-        },        
+          "properties": {}
+        },
         {
           "apiVersion": "2015-08-01",
           "name": "appsettings",
           "type": "config",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/Sites', variables('website_name'))]"
+            "[resourceId('Microsoft.Web/Sites', variables('website_name'))]"
           ],
           "properties": {
-              "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', variables('insights_name'))).InstrumentationKey]",
-              "USE_NULL_TESTIMONIALS_SERVICE": "use",
-              "WEBSITE_NODE_DEFAULT_VERSION": "6.9.1",
-              "SettingsUrl": "[parameters('web_settings_url')]"
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', variables('insights_name'))).InstrumentationKey]",
+            "USE_NULL_TESTIMONIALS_SERVICE": "use",
+            "WEBSITE_NODE_DEFAULT_VERSION": "6.9.1",
+            "SettingsUrl": "[parameters('web_settings_url')]"
           }
         }
       ]
@@ -115,5 +115,11 @@
         "ApplicationId": "[variables('website_name')]"
       }
     }
-  ]
+  ],
+  "outputs": {
+    "web": {
+      "type": "string",
+      "value": "concat(parameters('website_name'),variables('suffix'))]"
+    }
+  }
 }
