@@ -41,7 +41,7 @@
     "unique_str": "[if(parameters('unique_resources'),uniqueString(resourceGroup().id), '')]",
     "suffix": "[concat(parameters('environment'), variables('unique_str'))]",
     "serverfarm_name": "[concat(parameters('serverfarm_name'),variables('suffix'))]",
-    "website_name": "[concat(parameters('website_name'),variables('suffix'))]",
+    "website_name": "[concat(parameters('website_name'),variables('suffix'))]"
    // "insights_name": "[concat('insights', variables('website_name'))]"
   },
   "resources": [
@@ -73,7 +73,7 @@
         "displayName": "WebApp for Public Web"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_name'))]",
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarm_name'))]"
         //"[resourceId('microsoft.insights/components/', variables('insights_name'))]"
       ],
       "resources": [
