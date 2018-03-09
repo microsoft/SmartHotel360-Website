@@ -145,7 +145,7 @@
   "outputs": {
     "function": {
       "type": "string",
-      "value": "[concat(parameters('funcapp_name'),variables('suffix'))]"
+      "value": "[concat(variables('funcapp_name'),'.azurewebsites.net ')]"
     }
   }
 }

@@ -119,7 +119,7 @@
   "outputs": {
     "web": {
       "type": "string",
-      "value": "concat(parameters('website_name'),variables('suffix'))]"
+      "value": "concat(variables('website_name'),'.azurewebsites.net')]"
     }
   }
 }
