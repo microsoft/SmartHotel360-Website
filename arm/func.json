@@ -145,7 +145,7 @@
   "outputs": {
     "function": {
       "type": "string",
-      "value": "[parameters('funcapp_name')]"
+      "value": "[variables('funcapp_name')]"
     }
   }
 }
