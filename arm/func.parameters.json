@@ -14,8 +14,11 @@
     "vision_name": {
       "value": "sh360-vision-"
     },
-    "svcPlanSize":{
+    "svcPlanSize": {
       "value": "Y1"
+    },
+    "svcPlanSku": {
+      "value": "Free"
     },
     "svcFamily": {
       "value": "Y"
