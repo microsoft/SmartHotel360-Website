@@ -17,135 +17,145 @@
     "svcFamily": {
       "type": "string"
     },
-    "svcCapacity": {
-      "type": "int"
-    },
-    "funcapp_storage_name": {
-      "type": "string"
-    },
-    "vision_name": {
-      "type": "string"
-    },
-    "unique_resources": {
-      "type": "bool"
-    },
-    "environment": {
-      "type": "string"
-    }
-  },
-  "variables": {
-    "unique_str": "[if(parameters('unique_resources'),uniqueString(resourceGroup().id), '')]",
-    "suffix": "[concat(parameters('environment'), variables('unique_str'))]",
-    "func_splan_name": "[concat(parameters('func_splan_name'),variables('suffix'))]",
-    "funcapp_name": "[concat(parameters('funcapp_name'),variables('suffix'))]",
-    "funcapp_storage_name": "[take(concat(parameters('funcapp_storage_name'),variables('suffix')), 23)]",
-    "funcapp_storage_id": "[concat(resourceGroup().id,'/providers/Microsoft.Storage/storageAccounts/', variables('funcapp_storage_name'))]",
-    "vision_name": "[concat(parameters('vision_name'),variables('suffix'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2015-08-01",
-      "name": "[variables('func_splan_name')]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "[parameters('svcPlanSize')]",
-        "tier": "Dynamic",
-        "size": "[parameters('svcPlanSize')]",
-        "family": "[parameters('svcFamily')]",
-        "capacity": "[parameters('svcCapacity')]"
-      },
-      "kind": "functionapp",
-      "tags": {
-        "displayName": "ServicePlan for funcapp"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "kind": "functionapp",
-      "name": "[variables('funcapp_name')]",
-      "apiVersion": "2016-08-01",
-      "location": "South Central US",
-      "scale": null,
-      "properties": {
-        "enabled": true,
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('func_splan_name'))]"
-      },
-      "resources": [
-        {
-          "name": "appsettings",
-          "type": "config",
-          "apiVersion": "2015-08-01",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('funcapp_name'))]"
-          ],
-          "tags": {
-            "displayName": "Funcapp settings"
-          },
-          "properties": {
-            "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('funcapp_storage_name'),';AccountKey=',concat(listKeys(variables('funcapp_storage_id'),'2015-05-01-preview').key1))]",
-            "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('funcapp_storage_name'),';AccountKey=',concat(listKeys(variables('funcapp_storage_id'),'2015-05-01-preview').key1))]",
-            "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('funcapp_storage_name'),';AccountKey=',concat(listKeys(variables('funcapp_storage_id'),'2015-05-01-preview').key1))]",
-            "WEBSITE_CONTENTSHARE": "[variables('funcapp_storage_name')]"
-          }
-        }
-      ],
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('func_splan_name'))]"
+    "svcPlanSku": {
+      "type": "string",
+      "allowedValues": [
+        "Free",
+        "Shared",
+        "Basic",
+        "Standard",
+        "Premium"
       ]
     },
-    {
-      "type": "Microsoft.CognitiveServices/accounts",
-      "sku": {
-        "name": "F0"
+      "svcCapacity": {
+        "type": "int"
       },
-      "kind": "ComputerVision",
-      "name": "[variables('vision_name')]",
-      "apiVersion": "2016-02-01-preview",
-      "location": "[resourceGroup().location]",
-      "scale": null,
-      "properties": {},
-      "dependsOn": []
+      "funcapp_storage_name": {
+        "type": "string"
+      },
+      "vision_name": {
+        "type": "string"
+      },
+      "unique_resources": {
+        "type": "bool"
+      },
+      "environment": {
+        "type": "string"
+      }
     },
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "sku": {
-        "name": "Standard_LRS",
-        "tier": "Standard"
+    "variables": {
+      "unique_str": "[if(parameters('unique_resources'),uniqueString(resourceGroup().id), '')]",
+      "suffix": "[concat(parameters('environment'), variables('unique_str'))]",
+      "func_splan_name": "[concat(parameters('func_splan_name'),variables('suffix'))]",
+      "funcapp_name": "[concat(parameters('funcapp_name'),variables('suffix'))]",
+      "funcapp_storage_name": "[take(concat(parameters('funcapp_storage_name'),variables('suffix')), 23)]",
+      "funcapp_storage_id": "[concat(resourceGroup().id,'/providers/Microsoft.Storage/storageAccounts/', variables('funcapp_storage_name'))]",
+      "vision_name": "[concat(parameters('vision_name'),variables('suffix'))]"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2015-08-01",
+        "name": "[variables('func_splan_name')]",
+        "location": "[resourceGroup().location]",
+        "sku": {
+          "name": "[parameters('svcPlanSize')]",
+          "tier": "[parameters('svcPlanSku')]",
+          "size": "[parameters('svcPlanSize')]",
+          "family": "[parameters('svcFamily')]",
+          "capacity": "[parameters('svcCapacity')]"
+        },
+        "kind": "functionapp",
+        "tags": {
+          "displayName": "ServicePlan for funcapp"
+        }
       },
-      "kind": "Storage",
-      "name": "[variables('funcapp_storage_name')]",
-      "apiVersion": "2017-06-01",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "scale": null,
-      "properties": {
-        "encryption": {
-          "keySource": "Microsoft.Storage",
-          "services": {
-            "blob": {
-              "enabled": true
+      {
+        "type": "Microsoft.Web/sites",
+        "kind": "functionapp",
+        "name": "[variables('funcapp_name')]",
+        "apiVersion": "2015-08-01",
+        "location": "[resourceGroup().location]",
+        "scale": null,
+        "properties": {
+          "enabled": true,
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('func_splan_name'))]"
+        },
+        "resources": [
+          {
+            "name": "appsettings",
+            "type": "config",
+            "apiVersion": "2015-08-01",
+            "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', variables('funcapp_name'))]"
+            ],
+            "tags": {
+              "displayName": "Funcapp settings"
             },
-            "file": {
-              "enabled": true
+            "properties": {
+              "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('funcapp_storage_name'),';AccountKey=',concat(listKeys(variables('funcapp_storage_id'),'2015-05-01-preview').key1))]",
+              "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('funcapp_storage_name'),';AccountKey=',concat(listKeys(variables('funcapp_storage_id'),'2015-05-01-preview').key1))]",
+              "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('funcapp_storage_name'),';AccountKey=',concat(listKeys(variables('funcapp_storage_id'),'2015-05-01-preview').key1))]",
+              "WEBSITE_CONTENTSHARE": "[variables('funcapp_storage_name')]"
             }
           }
-        },
-        "networkAcls": {
-          "bypass": "AzureServices",
-          "defaultAction": "Allow",
-          "ipRules": [],
-          "virtualNetworkRules": []
-        },
-        "supportsHttpsTrafficOnly": false
+        ],
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverfarms', variables('func_splan_name'))]"
+        ]
       },
-      "dependsOn": []
-    }
-  ],
-  "outputs": {
-    "function": {
-      "type": "string",
-      "value": "[variables('funcapp_name')]"
+      {
+        "type": "Microsoft.CognitiveServices/accounts",
+        "sku": {
+          "name": "F0"
+        },
+        "kind": "ComputerVision",
+        "name": "[variables('vision_name')]",
+        "apiVersion": "2016-02-01-preview",
+        "location": "[resourceGroup().location]",
+        "scale": null,
+        "properties": {},
+        "dependsOn": []
+      },
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+        },
+        "kind": "Storage",
+        "name": "[variables('funcapp_storage_name')]",
+        "apiVersion": "2017-06-01",
+        "location": "[resourceGroup().location]",
+        "tags": {},
+        "scale": null,
+        "properties": {
+          "encryption": {
+            "keySource": "Microsoft.Storage",
+            "services": {
+              "blob": {
+                "enabled": true
+              },
+              "file": {
+                "enabled": true
+              }
+            }
+          },
+          "networkAcls": {
+            "bypass": "AzureServices",
+            "defaultAction": "Allow",
+            "ipRules": [],
+            "virtualNetworkRules": []
+          },
+          "supportsHttpsTrafficOnly": false
+        },
+        "dependsOn": []
+      }
+    ],
+    "outputs": {
+      "function": {
+        "type": "string",
+        "value": "[variables('funcapp_name')]"
+      }
     }
   }
-}
