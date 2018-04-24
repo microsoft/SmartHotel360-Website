@@ -8,8 +8,6 @@ namespace SmartHotel360.PublicWeb.Models.Settings
         public Urls Urls { get; set; }
         public Tokens Tokens { get; set; }
         public B2c B2c { get; set; }
-        public PetsConfig Pets_Config{ get; set; }
-
         public FakeAuthSettings FakeAuth { get; set; }
     }
 }

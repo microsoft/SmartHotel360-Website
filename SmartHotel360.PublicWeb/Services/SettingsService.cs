@@ -10,10 +10,15 @@ namespace SmartHotel360.PublicWeb.Services
     public class SettingsService
     {
         public ServerSettings GlobalSettings { get; }
+        public LocalSettings LocalSettings { get; set; }
 
-        private SettingsService(ServerSettings settings) => GlobalSettings = settings;
+        private SettingsService(ServerSettings settings, LocalSettings localSettings)
+        {
+            GlobalSettings = settings;
+            LocalSettings = localSettings;
+        }
 
-        public static  SettingsService Load(LocalSettings localSettings)
+        public static SettingsService Load(LocalSettings localSettings)
         {
             using (var client = new HttpClient())
             {
@@ -25,7 +30,7 @@ namespace SmartHotel360.PublicWeb.Services
                     model.Production = localSettings.Production;
                     model.FakeAuth = localSettings.FakeAuth;
 
-                    return new SettingsService(model);
+                    return new SettingsService(model, localSettings);
                 }
             }
         }
