@@ -6,11 +6,12 @@ We are happy to announce the release of SmartHotel360. This release intends to s
 For this reference app scenario, we built several consumer and line-of-business apps and an Azure backend. You can find all SmartHotel360 repos in the following locations:
 
 * [SmartHotel360 ](https://github.com/Microsoft/SmartHotel360)
-* [Backend Services](https://github.com/Microsoft/SmartHotel360-Azure-backend)
+* [Backend Services (optimized for Kubernetes)](https://github.com/Microsoft/SmartHotel360-AKS-DevSpaces-Demo)
 * [Public Website](https://github.com/Microsoft/SmartHotel360-public-web)
 * [Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps)
 * [Sentiment Analysis](https://github.com/Microsoft/SmartHotel360-Sentiment-Analysis-App)
 * [Migrating Internal apps to Azure](https://github.com/Microsoft/SmartHotel360-internal-booking-apps)
+* [Original Backend Services](https://github.com/Microsoft/SmartHotel360-Azure-backend)
 
 # SmartHotel360 - Public Web 
 Welcome to the repository containing the public web site of the SmartHotel360. SmartHotel360 has multiple apps that share a common Azure backend, including a public website where hotel guests can book a room, smart conference rooms, and even include their accompanying family travelers and their pets! The site was built using ASP.NET Core 2.0. 
