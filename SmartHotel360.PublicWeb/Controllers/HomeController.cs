@@ -8,15 +8,15 @@ namespace SmartHotel360.PublicWeb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ServerSettings _globalSettings;
+        private readonly LocalSettings _LocalSettings;
 
         public HomeController(SettingsService settingsService)
         {
-            _globalSettings = settingsService.GlobalSettings;
+            _LocalSettings = settingsService.LocalSettings;
         }
         public IActionResult Index()
         {
-            return View(_globalSettings);
+            return View(_LocalSettings);
         }
 
         public IActionResult Error()
