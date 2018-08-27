@@ -72,5 +72,8 @@
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2",
     "webpack-merge": "4.1.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.0"
   }
 }
