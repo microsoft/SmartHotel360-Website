@@ -168,7 +168,7 @@ class RoomDetail extends Component {
             <div className='sh-room_detail-extra'>
                 <ul className='sh-room_detail-reviews'>
                     {this.props.isLoading ? <Loading /> 
-                        : this.props.reviews.map((review, key: number) =>
+                        : this.props.reviews.map((review, key) =>
                         <li className='sh-room_detail-review' key={key}>
                             <header className='sh-room_detail-review_header'>
                                 <div>

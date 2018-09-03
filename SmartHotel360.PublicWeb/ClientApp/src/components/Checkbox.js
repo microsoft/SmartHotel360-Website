@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 
-export default class Checkbox extends Component<CheckboxProps {
+export default class Checkbox extends Component {
     render() {
         return <div >
             <label className='sh-checkbox'>
