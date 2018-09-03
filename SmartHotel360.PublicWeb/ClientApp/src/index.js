@@ -2,6 +2,7 @@ import './global';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import './scss/site.css';
 
 import React from 'react';

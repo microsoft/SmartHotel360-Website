@@ -138,7 +138,6 @@ export const actionCreators = {
         fetch(`${settings().urls.hotels}Cities?name=${value}`)
             .then(response => response.json())
             .then(data => {
-                debugger
                 data = data.map((item) => {
                     return new City(item.id, item.name, item.country);
                 });

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
 import * as moment from 'moment';
 import { bindActionCreators } from 'redux';
 import * as $ from 'jquery';
@@ -151,8 +152,6 @@ class Search extends Component {
     }
 
     renderOptionWhen() {
-        const DatePicker = (require('react-datepicker')).default;
-
         if (!this.props.when.value.startDate) {
             return (<div className='sh-search-when'>
                 <DatePicker
