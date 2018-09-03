@@ -20,29 +20,37 @@ export const Guest = {
 }
 
 export class City {
-    id;
-    name;
-    country;
+    constructor (id, name, country) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+    }
 }
 
 export class Guests {
-    adults;
-    kids;
-    baby;
-    rooms;
-    work;
-    pet;
+    constructor(adults, kids, baby, rooms, work, pet) {
+        this.adults = adults;
+        this.kids = kids;
+        this.baby = baby;
+        this.rooms = rooms;
+        this.work = work;
+        this.pet = pet;
+    }
 }
 
 export class People {
-    total;
+    constructor(total) {
+        this.total = total;
+    }
 }
 
 export class Dates {
-    startDate;
-    endDate;
-    isStartDateSelected;
-    isEndDateSelected;
+    constructor(startDate, endDate, isStartDateSelected, isEndDateSelected) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isStartDateSelected = isStartDateSelected;
+        this.isEndDateSelected = isEndDateSelected;
+    }
 
     get startFull() {
         return this.startDate ? `${this.startDate.format('DD MMM')}` : '';
@@ -130,6 +138,7 @@ export const actionCreators = {
         fetch(`${settings().urls.hotels}Cities?name=${value}`)
             .then(response => response.json())
             .then(data => {
+                debugger
                 data = data.map((item) => {
                     return new City(item.id, item.name, item.country);
                 });

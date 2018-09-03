@@ -7,7 +7,9 @@ export const Status = {
 }
 
 export class PetInfo {
-    base64;
+    constructor(base64) {
+        this.base64 = base64;
+    }
 }
 
 const initialState = {

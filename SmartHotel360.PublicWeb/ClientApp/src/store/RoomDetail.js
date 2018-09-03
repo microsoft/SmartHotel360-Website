@@ -1,15 +1,17 @@
 ﻿import { settings } from '../Settings';
 
 export class Booking {
-    hotelId;
-    userId;
-    from;
-    to;
-    adults;
-    kids;
-    babies;
-    roomType;
-    price;
+    constructor(hotelId, userId, from, to, adults, kids, babies, roomType, price) {
+        this.hotelId = hotelId;
+        this.userId = userId;
+        this.from = from;
+        this.to = to;
+        this.adults = adults;
+        this.kids = kids;
+        this.babies = babies;
+        this.roomType = roomType;
+        this.price = price;
+    }
 }
 
 export const ServicesDictionary = {
