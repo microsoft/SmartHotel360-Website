@@ -2,15 +2,8 @@ import { Md5 } from 'ts-md5/dist/md5';
 import * as Msal from 'msal';
 import { settings } from '../Settings';
 
-const tenant = settings.b2c.tenant;
-const policy = settings.b2c.policy;
-const client = settings.b2c.client;
-
-const fakeAuth = settings.fakeAuth;
-const useFakeAuth = fakeAuth.userId !== '' && fakeAuth.userId !== null;
 
 const scopes = ['openid'];
-const authority = `https://login.microsoftonline.com/tfp/${tenant}/${policy}`;
 
 let userManager;
 
@@ -26,6 +19,7 @@ const initialState = {
 
 let getUserData = (accessToken) => {
     const user = userManager.getUser();
+    
     // get email
     const jwt = Msal.Utils.decodeJwt(accessToken);
     let email = user.name;
@@ -43,6 +37,11 @@ let getUserData = (accessToken) => {
 
 export const actionCreators = {
     init: () => (dispatch, getState) => {
+        const tenant = settings().b2c.tenant;
+        const policy = settings().b2c.policy;
+        const client = settings().b2c.client;
+
+        const authority = `https://login.microsoftonline.com/tfp/${tenant}/${policy}`;
         userManager = new Msal.UserAgentApplication(client, authority,
             (errorDesc, token, error, tokenType) => {
                 if (token) {
@@ -72,6 +71,8 @@ export const actionCreators = {
     },
 
     login: () => (dispatch, getState) => {
+        const fakeAuth = settings().fakeAuth;
+        const useFakeAuth = fakeAuth.userId !== '' && fakeAuth.userId !== null;
 
         if (useFakeAuth) {
             dispatch({
@@ -108,9 +109,6 @@ export const reducer = (state, action) => {
         case 'LOGOUT_ACTION':
             return { ...state, error: false };
         default:
-            // The following line guarantees that every action in the KnownAction union has been covered by a case above
-            const exhaustiveCheck = action;
+            return { ...initialState };
     }
-
-    return state || { ...initialState };
 };

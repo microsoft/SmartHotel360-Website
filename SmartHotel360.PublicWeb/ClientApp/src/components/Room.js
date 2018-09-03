@@ -4,7 +4,7 @@ import { settings } from '../Settings';
 export default class Room extends Component {
     setBackgroundImage(image) {
         return {
-            backgroundImage: `url(${settings.urls.images_Base}${image}), url('assets/images/placeholder.png')`
+            backgroundImage: `url(${settings().urls.images_Base}${image}), url('assets/images/placeholder.png')`
         };
     }
 

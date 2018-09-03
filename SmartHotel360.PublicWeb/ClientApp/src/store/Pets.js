@@ -18,11 +18,6 @@ const initialState = {
     status: {approved: false, message: ''}
 };
 
-class PetAcceptedResponse {
-    approved
-    message
-}
-
 function postImage(pet) {
     let fetchTask = fetch(api, {
         method: 'POST',
@@ -48,7 +43,7 @@ function recursiveGet(id, resolve) {
     let now = Date.now();
     if (!isGettingInfo && (now - startTime > differenceTime)) {
         isGettingInfo = true;
-        let fetchTask = fetch(api + `?identifier=${id}`)
+        fetch(api + `?identifier=${id}`)
             .then(response => response.json())
             .then(status => {
                 isGettingInfo = false;
@@ -115,9 +110,6 @@ export const reducer = (state, action) => {
         case 'END_POOLING_ACTION':
             return { ...state, isUploading: false, isThinking: false, image: null, status: action.status };
         default:
-            // the following line guarantees that every action in the KnownAction union has been covered by a case above
-            const exhaustiveCheck = action;
+            return { ...initialState };
     }
-
-    return state || { ...initialState };
 };

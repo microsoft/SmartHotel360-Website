@@ -82,9 +82,9 @@ export const actionCreators = {
     },
 
     requestRoom: (id, user) => (dispatch, getState) => {
-        let url = `${settings.urls.hotels}Hotels/${id}`;
+        let url = `${settings().urls.hotels}Hotels/${id}`;
         if (user.id !== '' && user.id !== null) {
-            url = `${settings.urls.hotels}Hotels/${id}?user=${user.id}`
+            url = `${settings().urls.hotels}Hotels/${id}?user=${user.id}`
         }   
         let fetchTask = fetch(url)
             .then(response => response.json())
@@ -96,7 +96,7 @@ export const actionCreators = {
     },
 
     requestReviews: (id) => (dispatch, getState) => {
-        let fetchTask = fetch(`${settings.urls.reviews}/reviews/hotel/${id}`)
+        let fetchTask = fetch(`${settings().urls.reviews}/reviews/hotel/${id}`)
             .then(response => response.json())
             .then(data => {
                 dispatch({ type: 'RECEIVE_REVIEWS_ACTION', reviews: data });
@@ -110,7 +110,7 @@ export const actionCreators = {
         headers.append('Content-Type', 'application/json');
         const auth = user.isFake ? `Email ${user.token}` : `Bearer ${user.token}`
 
-        let fetchTask = fetch(`${settings.urls.bookings}Bookings`, {
+        let fetchTask = fetch(`${settings().urls.bookings}Bookings`, {
             method: 'POST',
             headers: {
                 'Authorization': auth,
@@ -151,9 +151,6 @@ export const reducer = (state, action) => {
         case 'DISMISS_MODAL_ACTION':
             return { ...state, showConfirmationModal: false };
         default:
-            // the following line guarantees that every action in the KnownAction union has been covered by a case above
-            const exhaustiveCheck = action;
+            return { ...initialState };
     }
-
-    return state || { ...initialState };
 }

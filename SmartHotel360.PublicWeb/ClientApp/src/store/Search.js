@@ -127,7 +127,7 @@ export const actionCreators = {
 
         dispatch({ type: 'RECEIVE_WHERE_ACTION', list: [] });
 
-        let fetchTask = fetch(`${settings.urls.hotels}Cities?name=${value}`)
+        fetch(`${settings().urls.hotels}Cities?name=${value}`)
             .then(response => response.json())
             .then(data => {
                 data = data.map((item) => {
@@ -160,7 +160,7 @@ export const actionCreators = {
     },
 
     selectWhenStart: (date) => (dispatch, getState) => {
-        const end = getState().search.when.value.endDate;
+        getState().search.when.value.endDate;
         dispatch({ type: 'SELECT_WHEN_ACTION', next: Option.When, start: date, end: date});
     },
 
@@ -230,9 +230,6 @@ export const reducer = (state, action) => {
         case 'SELECT_PEOPLE_ACTION':
             return { ...state, people: { ...state.people, value: new People(action.total) } };
         default:
-            // the following line guarantees that every action in the KnownAction union has been covered by a case above
-            const exhaustiveCheck = action;
+            return { ...initialState };
     }
-
-    return state || { ...initialState };
 };

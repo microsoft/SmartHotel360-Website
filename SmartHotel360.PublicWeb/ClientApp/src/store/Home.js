@@ -22,9 +22,6 @@ export const reducer = (state, action) => {
         case 'RECEIVE_TESTIMONIAL_ACTION':
             return { ...state, isLoading: false, testimonial: action.testimonial };
         default:
-            // The following line guarantees that every action in the KnownAction union has been covered by a case above
-            const exhaustiveCheck = action;
+            return { ...initialState };
     }
-
-    return state || { ...initialState };
 };

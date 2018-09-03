@@ -24,9 +24,6 @@ export const reducer = (state, action) => {
         case 'CLOSE_MODAL_ACTION':
             return { ...state, isModalOpen: false };
         default:
-            // The following line guarantees that every action in the KnownAction union has been covered by a case above using any because only one case
-            const exhaustiveCheck = action;
+            return { ...initialState };
     }
-
-    return state || { ...initialState };
 };

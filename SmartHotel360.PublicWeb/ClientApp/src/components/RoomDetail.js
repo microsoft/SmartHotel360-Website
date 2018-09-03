@@ -14,11 +14,11 @@ class RoomDetail extends Component {
     modal;
 
     componentWillMount() {
-        this.state = {
+        this.setState({
             bookingText: 'Login to book',
             canBook: false,
             tab: RoomDetailStore.Tabs.Hotel
-        };
+        });
 
         if (this.props.user.id) {
             this.setState(prev => ({ ...prev, bookingText: 'Book now', canBook: true }));
@@ -202,7 +202,7 @@ class RoomDetail extends Component {
 
     setBackgroundImage(image) {
         return {
-            backgroundImage: `url(${settings.urls.images_Base}${image})`
+            backgroundImage: `url(${settings().urls.images_Base}${image})`
         };
     }
 

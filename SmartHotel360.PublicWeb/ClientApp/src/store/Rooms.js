@@ -17,9 +17,7 @@ const initialState = {
 
 export const actionCreators = {
     requestFeatured: () => (dispatch, getState) => {
-        console.log(settings);
-        debugger
-       let fetchTask = fetch(`${settings.urls.hotels}Featured`)
+       fetch(`${settings().urls.hotels}Featured`)
             .then(response => response.json())
             .then(data => {
                 dispatch({ type: 'RECEIVE_FEATURED_ACTION', list: data });
@@ -31,7 +29,7 @@ export const actionCreators = {
     requestFiltered: () => (dispatch, getState) => {
 
         const state = getState();
-        let fetchTask = fetch(`${settings.urls.hotels}Hotels/search?cityId=${state.search.where.value.id}&rating=${state.rooms.filters.rating}&minPrice=${state.rooms.filters.minPrice}&maxPrice=${state.rooms.filters.maxPrice}`, { method: 'GET' })
+        fetch(`${settings().urls.hotels}Hotels/search?cityId=${state.search.where.value.id}&rating=${state.rooms.filters.rating}&minPrice=${state.rooms.filters.minPrice}&maxPrice=${state.rooms.filters.maxPrice}`, { method: 'GET' })
             .then(response => response.json())
             .then(data => {
                 dispatch({ type: 'RECEIVE_FILTERED_ACTION', list: data });
@@ -66,9 +64,6 @@ export const reducer = (state, action) => {
                 ...state, isLoading: false, list: action.list
             };
         default:
-            // The following line guarantees that every action in the KnownAction union has been covered by a case above
-            const exhaustiveCheck = action;
+            return { ...initialState };
     }
-
-    return state || { ...initialState };
 };

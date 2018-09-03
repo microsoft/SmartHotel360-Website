@@ -10,7 +10,6 @@ import { RoomHighlighted } from './RoomHighlighted';
 import Loading from './Loading';
 
 class Home extends Component {
-
     componentDidMount() {
         this.props.requestTestimonial();
     }

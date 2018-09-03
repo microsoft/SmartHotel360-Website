@@ -29,9 +29,6 @@ export const reducer = (state, action) => {
         case 'NAVIGATE_HOME_ACTION':
             return { ...state, isHome: true };
         default:
-            // The following line guarantees that every action in the KnownAction union has been covered by a case above using any because only one case
-            const exhaustiveCheck = action;
+            return { ...initialState };
     }
-
-    return state || { ...initialState };
 };

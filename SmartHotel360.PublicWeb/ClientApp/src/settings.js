@@ -25,13 +25,11 @@ class Settings {
 }
 
 let clientSettings = new Settings();
+let serverSettings;
 
 export const loadSettings = async () => {
     const response = await fetch('/api/config');
-    const json = await response.json();
-    console.log(json);
-
-    clientSettings = { ...clientSettings, ...json }
+    serverSettings = await response.json();
 };
 
-export const settings = clientSettings;
+export const settings = () => serverSettings;

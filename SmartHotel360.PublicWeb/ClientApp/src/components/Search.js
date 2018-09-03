@@ -11,7 +11,7 @@ import Checkbox from './Checkbox';
 
 class Search extends Component {
     componentWillMount() {
-        this.state = {
+        this.setState({
             tab: SearchStore.Tab.Smart,
             selected: SearchStore.Option.Where,
             started: false,
@@ -20,7 +20,7 @@ class Search extends Component {
             guestsFilled: false,
             peopleFilled: false,
             shouldRender: true
-        };
+        });
     }
 
     componentWillUpdate(nextProps) {
