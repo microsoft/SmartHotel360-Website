@@ -1,35 +1,29 @@
-﻿import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import './NavMenu.css';
+import { connect } from 'react-redux';
+import { ApplicationState } from '../store';
+import Auth from './Auth';
+import * as NavMenuStore from '../store/NavMenu';
 
-export default props => (
-  <Navbar inverse fixedTop fluid collapseOnSelect>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <Link to={'/'}>WebApplication1</Link>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-        <LinkContainer to={'/'} exact>
-          <NavItem>
-            <Glyphicon glyph='home' /> Home
-          </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/counter'}>
-          <NavItem>
-            <Glyphicon glyph='education' /> Counter
-          </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/fetchdata'}>
-          <NavItem>
-            <Glyphicon glyph='th-list' /> Fetch data
-          </NavItem>
-        </LinkContainer>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
-);
+class NavMenu extends Component {
+    render() {
+        return <div className={`sh-nav_menu ${this.props.isHome ? 'is-home' : ''}`}>
+            <Link to={'/'} className='sh-nav_menu-container'>
+                <img className={`sh-nav_menu-logo ${this.props.isHome ? 'is-home' : ''}`} src='/assets/images/logo.svg' />
+            </Link>
+
+            <ul className='sh-nav_menu-links'>
+                <Auth />
+            </ul>
+        </div>;
+    }
+
+    componentDidMount() {
+        this.props.listen(this.props.history);
+    }
+}
+
+export default connect(
+    state => state.nav,
+    dispatch => bindActionCreators(NavMenuStore.actionCreators, dispatch)
+)(NavMenu);

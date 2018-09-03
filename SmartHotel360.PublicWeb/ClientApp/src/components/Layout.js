@@ -1,16 +1,13 @@
-import React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
-import NavMenu from './NavMenu';
+import React, { Component } from 'react';
+import { Footer } from './Footer';
 
-export default props => (
-  <Grid fluid>
-    <Row>
-      <Col sm={3}>
-        <NavMenu />
-      </Col>
-      <Col sm={9}>
-        {props.children}
-      </Col>
-    </Row>
-  </Grid>
-);
+export default class Layout extends Component {
+    render() {
+        return <div className='sh-site'>
+            <section className='sh-content'>
+                { this.props.children }
+            </section>
+            <Footer />
+        </div>;
+    }
+}
