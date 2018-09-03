@@ -6,11 +6,11 @@ using System;
 
 namespace SmartHotel360.PublicWeb.Controllers
 {
-    public class HomeController : Controller
+    public class ConfigController : Controller
     {
         private readonly LocalSettings _LocalSettings;
 
-        public HomeController(SettingsService settingsService)
+        public ConfigController(SettingsService settingsService)
         {
             _LocalSettings = settingsService.LocalSettings;
         }
