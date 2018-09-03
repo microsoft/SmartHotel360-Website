@@ -22,6 +22,6 @@ export const reducer = (state, action) => {
         case 'RECEIVE_TESTIMONIAL_ACTION':
             return { ...state, isLoading: false, testimonial: action.testimonial };
         default:
-            return { ...initialState };
+            return state || { ...initialState };
     }
 };

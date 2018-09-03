@@ -112,6 +112,6 @@ export const reducer = (state, action) => {
         case 'END_POOLING_ACTION':
             return { ...state, isUploading: false, isThinking: false, image: null, status: action.status };
         default:
-            return { ...initialState };
+            return state || { ...initialState };
     }
 };

@@ -64,6 +64,6 @@ export const reducer = (state, action) => {
                 ...state, isLoading: false, list: action.list
             };
         default:
-            return { ...initialState };
+            return state || { ...initialState };
     }
 };

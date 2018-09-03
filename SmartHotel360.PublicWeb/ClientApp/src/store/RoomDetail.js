@@ -153,6 +153,6 @@ export const reducer = (state, action) => {
         case 'DISMISS_MODAL_ACTION':
             return { ...state, showConfirmationModal: false };
         default:
-            return { ...initialState };
+            return state || { ...initialState };
     }
 }

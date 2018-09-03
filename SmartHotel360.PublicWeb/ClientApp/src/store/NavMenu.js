@@ -29,6 +29,6 @@ export const reducer = (state, action) => {
         case 'NAVIGATE_HOME_ACTION':
             return { ...state, isHome: true };
         default:
-            return { ...initialState };
+            return state || { ...initialState };
     }
 };

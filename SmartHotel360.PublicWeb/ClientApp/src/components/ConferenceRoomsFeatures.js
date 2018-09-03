@@ -16,10 +16,6 @@ class ConferenceRoomsFeatures extends Component {
         }
     }
 
-    onLoad = () => {
-        console.log(this.props);
-    }
-
     onSwipedLeft = () => {
         this.props.translateLeft();
     }

@@ -82,6 +82,6 @@ export const reducer = (state, action) => {
         case 'TRANSLATE_ACTION':
             return { ...state, translation: { ...state.translation, current: action.current, styles: createStyles(action.current, state.translation.units) } };
         default:
-            return { ...initialState };
+            return state || { ...initialState };
     }
 };

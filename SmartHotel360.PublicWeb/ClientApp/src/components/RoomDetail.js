@@ -11,13 +11,12 @@ import { settings } from '../Settings';
 import ModalDialog from './ModalDialog';
 
 class RoomDetail extends Component {
-    modal;
-
     componentWillMount() {
         this.setState({
             bookingText: 'Login to book',
             canBook: false,
-            tab: RoomDetailStore.Tabs.Hotel
+            tab: RoomDetailStore.Tabs.Hotel,
+            showModal: false
         });
 
         if (this.props.user.id) {
@@ -27,15 +26,17 @@ class RoomDetail extends Component {
 
     componentWillUpdate(nextProps) {
         if (nextProps.showConfirmationModal) {
-            this.modal.open();
+            if (!this.state.showModal) {
+                this.openModal();
+            }
         }
     }
     
     openModal = () => {
-        this.modal.open();
+        this.setState({ showModal: true });
     }
     closeModal = () => {
-        this.modal.close();
+        this.setState({ showModal: false });
     }
 
     componentDidMount() {
@@ -299,7 +300,7 @@ class RoomDetail extends Component {
                 </div>
             </section>
 
-            <ModalDialog callback={this.props.dismissModal} onRef={(ref) => (this.modal = ref)}>
+            <ModalDialog callback={this.props.dismissModal} showModal={this.state.showModal}>
                 <div className='sh-modal'>
                     <header className='sh-modal-header'>
                         <div className='sh-modal-title'>

@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as ConferenceRoomsFeatures from './ConferenceRoomsFeatures';
 import * as Home from './Home';
-import * as ModalDialog from './ModalDialog';
 import * as NavMenu from './NavMenu';
 import * as Pets from './Pets';
 import * as RoomDetail from './RoomDetail';
@@ -15,8 +14,7 @@ export default function configureStore(history, initialState) {
   const reducers = {
     conferenceRoomsFeatures: ConferenceRoomsFeatures.reducer,
     home: Home.reducer,
-    modalDialog: ModalDialog.reducer,
-    navMenu: NavMenu.reducer,
+    nav: NavMenu.reducer,
     pets: Pets.reducer,
     roomDetail: RoomDetail.reducer,
     rooms: Rooms.reducer,

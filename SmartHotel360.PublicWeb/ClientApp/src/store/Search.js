@@ -237,6 +237,6 @@ export const reducer = (state, action) => {
         case 'SELECT_PEOPLE_ACTION':
             return { ...state, people: { ...state.people, value: new People(action.total) } };
         default:
-            return { ...initialState };
+            return state || { ...initialState };
     }
 };

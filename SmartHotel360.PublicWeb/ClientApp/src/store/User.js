@@ -1,5 +1,4 @@
 import { Md5 } from 'ts-md5/dist/md5';
-import * as Msal from 'msal';
 import { settings } from '../Settings';
 
 
@@ -21,7 +20,7 @@ let getUserData = (accessToken) => {
     const user = userManager.getUser();
     
     // get email
-    const jwt = Msal.Utils.decodeJwt(accessToken);
+    const jwt = window.Msal.Utils.decodeJwt(accessToken);
     let email = user.name;
     if (jwt && jwt.JWSPayload) {
         const decoded = JSON.parse(atob(jwt.JWSPayload));
@@ -42,7 +41,7 @@ export const actionCreators = {
         const client = settings().b2c.client;
 
         const authority = `https://login.microsoftonline.com/tfp/${tenant}/${policy}`;
-        userManager = new Msal.UserAgentApplication(client, authority,
+        userManager = new window.Msal.UserAgentApplication(client, authority,
             (errorDesc, token, error, tokenType) => {
                 if (token) {
                     userManager.acquireTokenSilent(scopes).then(accessToken => {
@@ -109,6 +108,6 @@ export const reducer = (state, action) => {
         case 'LOGOUT_ACTION':
             return { ...state, error: false };
         default:
-            return { ...initialState };
+            return state || { ...initialState };
     }
 };

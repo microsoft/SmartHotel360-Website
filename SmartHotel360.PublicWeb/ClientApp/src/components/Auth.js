@@ -30,7 +30,7 @@ class Auth extends Component {
                     </div>
                     <span className='sh-auth-link' onClick={() => { this.props.logout() }}>Logout</span>
                 </section>
-                <img className='sh-auth-picture' src={this.props.gravatar} title={this.props.name} />
+                <img alt="auth-picture" className='sh-auth-picture' src={this.props.gravatar} title={this.props.name} />
             </li>);
         }
     }

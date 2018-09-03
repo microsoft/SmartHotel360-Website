@@ -1,8 +1,5 @@
 ﻿import React, { Component } from 'react';
 import Modal from 'react-modal';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as ModalDialogStore from '../store/ModalDialog';
 
 const customStyles = {
     content: {
@@ -16,28 +13,15 @@ const customStyles = {
     }
 };
 
-class ModalDialog extends Component {
-    componentDidMount() {
-        this.props.onRef(this)
-    }
-
-    componentWillUnmount() {
-        this.props.onRef(undefined)
-    }
-
+export default class ModalDialog extends Component {
     close = () => {
-        this.props.close();
         this.props.callback();
-    }
-
-    open = () => {
-        this.props.open();
     }
 
     render() {
         return (
             <Modal
-                isOpen={this.props.isModalOpen}
+                isOpen={this.props.showModal}
                 contentLabel='Modal'
                 style={customStyles}
                 onRequestClose={this.close}>
@@ -46,8 +30,3 @@ class ModalDialog extends Component {
         )
     }
 }
-
-export default connect(
-    state => state.modalDialog,
-    dispatch => bindActionCreators(ModalDialogStore.actionCreators, dispatch)
-)(ModalDialog);
