@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import SearchInfo from './SearchInfo';
 import Filters from './Filters';
 import Rooms from './Rooms';

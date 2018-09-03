@@ -32,4 +32,4 @@ export const loadSettings = async () => {
     serverSettings = await response.json();
 };
 
-export const settings = () => serverSettings;
+export const settings = () => serverSettings || clientSettings;

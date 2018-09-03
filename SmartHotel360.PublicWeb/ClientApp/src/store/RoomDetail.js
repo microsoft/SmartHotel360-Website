@@ -86,7 +86,7 @@ export const actionCreators = {
         if (user.id !== '' && user.id !== null) {
             url = `${settings().urls.hotels}Hotels/${id}?user=${user.id}`
         }   
-        let fetchTask = fetch(url)
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 dispatch({ type: 'RECEIVE_ROOM_ACTION', room: data });
@@ -96,7 +96,7 @@ export const actionCreators = {
     },
 
     requestReviews: (id) => (dispatch, getState) => {
-        let fetchTask = fetch(`${settings().urls.reviews}/reviews/hotel/${id}`)
+        fetch(`${settings().urls.reviews}/reviews/hotel/${id}`)
             .then(response => response.json())
             .then(data => {
                 dispatch({ type: 'RECEIVE_REVIEWS_ACTION', reviews: data });
@@ -110,7 +110,7 @@ export const actionCreators = {
         headers.append('Content-Type', 'application/json');
         const auth = user.isFake ? `Email ${user.token}` : `Bearer ${user.token}`
 
-        let fetchTask = fetch(`${settings().urls.bookings}Bookings`, {
+        fetch(`${settings().urls.bookings}Bookings`, {
             method: 'POST',
             headers: {
                 'Authorization': auth,

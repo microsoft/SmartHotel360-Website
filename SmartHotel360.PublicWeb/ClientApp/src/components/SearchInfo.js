@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as moment from 'moment';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as SearchStore from '../store/Search';
@@ -7,9 +6,9 @@ import * as SearchStore from '../store/Search';
 
 class SearchInfo extends Component {
     componentWillMount() {
-        this.state = {
+        this.setState({
             tab: SearchStore.Tab.Smart
-        };
+        });
     }
 
     renderGuestsOrPeople() {

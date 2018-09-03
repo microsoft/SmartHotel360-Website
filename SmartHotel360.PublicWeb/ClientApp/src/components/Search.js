@@ -267,6 +267,8 @@ class Search extends Component {
                     this.props.updateGuestsBaby(babies);
                 }
                 break;
+            default:
+                return {};
         }
     }
 
@@ -284,6 +286,8 @@ class Search extends Component {
                 let babies = this.props.guests.value.baby + 1;
                 this.props.updateGuestsBaby(babies);
                 break;
+            default:
+                return {};
         }
     }
 
@@ -448,6 +452,7 @@ class Search extends Component {
                 if (this.state.shouldRender) {
                     return this.renderOptionWhen();
                 }
+                return;
             case SearchStore.Option.Guests:
                 return this.renderOptionGuests();
             case SearchStore.Option.People:

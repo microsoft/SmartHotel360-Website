@@ -4,7 +4,6 @@
 
 export const actionCreators = {
     init: () => (dispatch, getState) => {
-        let state = getState().modalDialog;
         dispatch({ type: 'INIT_ACTION' });
     },
     open: () => (dispatch, getState) => {

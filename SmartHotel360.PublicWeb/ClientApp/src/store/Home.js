@@ -5,7 +5,7 @@ const initialState = {
 
 export const actionCreators = {
     requestTestimonial: () => (dispatch, getState) => {
-        let fetchTask = fetch(`/api/Testimonials`)
+        fetch(`/api/Testimonials`)
             .then(response => response.json())
             .then(data => {
                 dispatch({ type: 'RECEIVE_TESTIMONIAL_ACTION', testimonial: data });

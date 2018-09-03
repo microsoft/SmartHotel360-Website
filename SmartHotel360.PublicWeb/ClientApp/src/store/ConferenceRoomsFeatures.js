@@ -68,8 +68,6 @@ export const actionCreators = {
 };
 
 export const reducer = (state, action) => {
-    let translation = 0;
-
     switch (action.type) {
         case 'REQUEST_FEATURES_ACTION':
             return { ...state };

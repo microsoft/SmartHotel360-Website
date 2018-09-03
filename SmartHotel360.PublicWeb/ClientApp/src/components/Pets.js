@@ -33,7 +33,7 @@ class Pets extends Component {
         return <div className='sh-pets'>
             <div className='sh-pets-hero'>
                 <div className='sh-pets-wrapper'>
-                    <img className='sh-pets-logo' src='/assets/images/logo.svg' />
+                    <img className='sh-pets-logo' alt="pet" src='/assets/images/logo.svg' />
                     <h1 className='sh-pets-title'>The future of intelligent hospitality and connected workplace</h1>
                 </div>
             </div>

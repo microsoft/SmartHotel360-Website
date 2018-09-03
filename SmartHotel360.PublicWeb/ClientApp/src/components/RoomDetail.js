@@ -197,6 +197,8 @@ class RoomDetail extends Component {
                 return this.renderDescription();
             case RoomDetailStore.Tabs.Reviews:
                 return this.renderReviews();
+            default:
+                return this.renderDescription();
         }
     }
 
@@ -344,7 +346,7 @@ class RoomDetail extends Component {
                     </section>
                     <footer className='sh-modal-footer'>
                         <div className='sh-room_detail-grow'>
-                            <img className='sh-modal-logo' src='/assets/images/logo.svg' />
+                            <img className='sh-modal-logo' alt="logo" src='/assets/images/logo.svg' />
                         </div>
                         <div className='sh-modal-total'>
                             <span className='sh-modal-small'>Total</span>

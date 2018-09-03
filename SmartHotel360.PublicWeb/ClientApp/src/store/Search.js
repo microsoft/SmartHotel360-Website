@@ -160,14 +160,13 @@ export const actionCreators = {
     },
 
     selectWhenStart: (date) => (dispatch, getState) => {
-        getState().search.when.value.endDate;
         dispatch({ type: 'SELECT_WHEN_ACTION', next: Option.When, start: date, end: date});
     },
 
     selectWhenEnd: (date) => (dispatch, getState) => {
         const state = getState().search;
         const start = state.when.value.startDate;
-        dispatch({ type: 'SELECT_WHEN_ACTION', next: Tab.Smart === Tab.Smart ? Option.Guests : Option.People, start: (start || moment()), end: date });
+        dispatch({ type: 'SELECT_WHEN_ACTION', next: Tab.Smart ? Option.Guests : Option.People, start: (start || moment()), end: date });
     },
 
     updateGuestsAdults: (value) => (dispatch, getState) => {

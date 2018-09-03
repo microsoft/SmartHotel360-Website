@@ -93,7 +93,7 @@ class Home extends Component {
                 <div className='sh-smartphone-wrapper'>
                     <h2 className='sh-smartphone-title'>Discover the full smart experience with your smartphone</h2>
                     <p className='sh-smartphone-description'>Explore our digital presence. Take a tour of our hotels, explore and plan your next get away. Get tips and recommendation on how to expand your experience with SmartHotel360.</p>
-                    <img className='sh-smartphone-image' src=' /assets/images/smartphone.png' />
+                    <img className='sh-smartphone-image' alt="phone" src=' /assets/images/smartphone.png' />
                 </div>
                 <div className='sh-smartphone-quote'>
                     {this.props.isLoading ? <div className='sh-smartphone-quote_loading'><Loading isBright={true} /></div> : <div className='sh-smartphone-quote_container'>

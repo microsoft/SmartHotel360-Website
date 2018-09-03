@@ -6,23 +6,23 @@ export class Footer extends Component {
             <section className='sh-footer-content'>
                 <div>
                     <div className='sh-footer-section'>
-                        <img className='sh-footer-logo' src='/assets/images/logo.svg' />
+                        <img className='sh-footer-logo' alt="logo" src='/assets/images/logo.svg' />
                     </div>
                 </div>
                 <div>
                     <div className='sh-footer-section'>
                         <ul className='sh-footer-list'>
                             <li>
-                                <a className='sh-footer-link' href='#'>Terms & Conditions</a>
+                                <a className='sh-footer-link' href=''>Terms & Conditions</a>
                             </li>
                             <li>
-                                <a className='sh-footer-link' href='#'>Privacy Policy</a>
+                                <a className='sh-footer-link' href=''>Privacy Policy</a>
                             </li>
                             <li>
-                                <a className='sh-footer-link' href='#'>Help</a>
+                                <a className='sh-footer-link' href=''>Help</a>
                             </li>
                             <li>
-                                <a className='sh-footer-link' href='#'>Contact</a>
+                                <a className='sh-footer-link' href=''>Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -32,18 +32,18 @@ export class Footer extends Component {
                         <p>Share</p>
                         <ul className='sh-footer-social'>
                             <li>
-                                <a href='#'>
-                                    <img className='sh-footer-icon' src='/assets/images/instagram.svg' />
+                                <a href=''>
+                                    <img className='sh-footer-icon' alt="instagram" src='/assets/images/instagram.svg' />
                                 </a>
                             </li>
                             <li>
-                                <a href='#'>
-                                    <img className='sh-footer-icon' src='/assets/images/facebook.svg' />
+                                <a href=''>
+                                    <img className='sh-footer-icon' alt="facebook" src='/assets/images/facebook.svg' />
                                 </a>
                             </li>
                             <li>
-                                <a href='#'>
-                                    <img className='sh-footer-icon' src='/assets/images/twitter.svg' />
+                                <a href=''>
+                                    <img className='sh-footer-icon' alt="twitter" src='/assets/images/twitter.svg' />
                                 </a>
                             </li>
                         </ul>
