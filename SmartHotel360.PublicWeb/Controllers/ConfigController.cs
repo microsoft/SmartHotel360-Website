@@ -6,6 +6,7 @@ using System;
 
 namespace SmartHotel360.PublicWeb.Controllers
 {
+    [Route("api/config")]
     public class ConfigController : Controller
     {
         private readonly LocalSettings _LocalSettings;
@@ -14,15 +15,11 @@ namespace SmartHotel360.PublicWeb.Controllers
         {
             _LocalSettings = settingsService.LocalSettings;
         }
-        public IActionResult Index()
-        {
-            return View(_LocalSettings);
-        }
 
-        public IActionResult Error()
+        [HttpGet]
+        public dynamic Get()
         {
-            ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-            return View();
+            return _LocalSettings;
         }
     }
 }
