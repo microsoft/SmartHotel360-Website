@@ -1,9 +1,8 @@
 ﻿import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ApplicationState } from '../store';
+import { bindActionCreators } from 'redux';
 import Loading from './Loading';
 import * as RoomsStore from '../store/Rooms';
-import { RoomHighlighted } from './RoomHighlighted';
 import { Link } from 'react-router-dom';
 
 class Rooms extends Component {

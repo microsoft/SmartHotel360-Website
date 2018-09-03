@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as moment from 'moment';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { ApplicationState } from '../store';
 import * as SearchStore from '../store/Search';
 
 

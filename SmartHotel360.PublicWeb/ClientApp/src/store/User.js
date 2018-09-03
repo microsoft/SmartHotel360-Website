@@ -1,4 +1,5 @@
 import { Md5 } from 'ts-md5/dist/md5';
+import * as Msal from 'msal';
 import { settings } from '../Settings';
 
 const tenant = settings.b2c.tenant;
@@ -6,7 +7,7 @@ const policy = settings.b2c.policy;
 const client = settings.b2c.client;
 
 const fakeAuth = settings.fakeAuth;
-const useFakeAuth = fakeAuth.userId != '' && fakeAuth.userId != null;
+const useFakeAuth = fakeAuth.userId !== '' && fakeAuth.userId !== null;
 
 const scopes = ['openid'];
 const authority = `https://login.microsoftonline.com/tfp/${tenant}/${policy}`;

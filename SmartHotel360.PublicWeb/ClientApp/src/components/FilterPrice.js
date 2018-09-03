@@ -1,6 +1,7 @@
 ﻿
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Slider, { Range } from 'rc-slider';
 import * as RoomsStore from '../store/Rooms';
 
@@ -23,4 +24,4 @@ class FilterPrice extends Component {
 export default connect(
     state => state.rooms,
     dispatch => bindActionCreators(RoomsStore.actionCreators, dispatch)
-)(Auth);
+)(FilterPrice);

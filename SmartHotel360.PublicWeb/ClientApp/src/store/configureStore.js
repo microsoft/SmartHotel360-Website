@@ -1,19 +1,19 @@
 ﻿import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import * as ConferenceRoomReatures from './Counter';
-import * as Home from './WeatherForecasts';
-import * as ModalDialog from './WeatherForecasts';
-import * as NavMenu from './WeatherForecasts';
-import * as Pets from './WeatherForecasts';
-import * as RoomDetail from './WeatherForecasts';
-import * as Rooms from './WeatherForecasts';
-import * as Search from './WeatherForecasts';
-import * as User from './WeatherForecasts';
+import * as ConferenceRoomsFeatures from './ConferenceRoomsFeatures';
+import * as Home from './Home';
+import * as ModalDialog from './ModalDialog';
+import * as NavMenu from './NavMenu';
+import * as Pets from './Pets';
+import * as RoomDetail from './RoomDetail';
+import * as Rooms from './Rooms';
+import * as Search from './Search';
+import * as User from './User';
 
 export default function configureStore(history, initialState) {
   const reducers = {
-    conferenceRoomReatures: ConferenceRoomReatures.reducer,
+    conferenceRoomsFeatures: ConferenceRoomsFeatures.reducer,
     home: Home.reducer,
     modalDialog: ModalDialog.reducer,
     navMenu: NavMenu.reducer,

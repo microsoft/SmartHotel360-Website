@@ -83,7 +83,7 @@ export const actionCreators = {
 
     requestRoom: (id, user) => (dispatch, getState) => {
         let url = `${settings.urls.hotels}Hotels/${id}`;
-        if (user.id != '' && user.id != null) {
+        if (user.id !== '' && user.id !== null) {
             url = `${settings.urls.hotels}Hotels/${id}?user=${user.id}`
         }   
         let fetchTask = fetch(url)
@@ -92,7 +92,6 @@ export const actionCreators = {
                 dispatch({ type: 'RECEIVE_ROOM_ACTION', room: data });
             });
 
-        addTask(fetchTask); // Ensure server-side prerendering waits for this to complete
         dispatch({ type: 'REQUEST_ROOM_ACTION' });
     },
 
@@ -103,7 +102,6 @@ export const actionCreators = {
                 dispatch({ type: 'RECEIVE_REVIEWS_ACTION', reviews: data });
             });
 
-        addTask(fetchTask); // Ensure server-side prerendering waits for this to complete
         dispatch({ type: 'REQUEST_REVIEWS_ACTION' });
     },
 

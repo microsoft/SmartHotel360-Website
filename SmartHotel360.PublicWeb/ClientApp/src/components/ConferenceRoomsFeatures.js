@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Swipeable from 'react-swipeable';
 import * as ConferenceRoomsFeaturesStore from '../store/ConferenceRoomsFeatures';
 

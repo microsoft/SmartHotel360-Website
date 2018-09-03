@@ -1,8 +1,7 @@
 ﻿import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import * as $ from 'jquery';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
-import { ApplicationState } from '../store';
 import * as RoomsStore from '../store/Rooms';
 
 class Filter extends Component {

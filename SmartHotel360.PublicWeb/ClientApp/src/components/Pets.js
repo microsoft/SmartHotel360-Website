@@ -1,7 +1,6 @@
 ﻿import React, { Component } from 'react';
 import * as $ from 'jquery';
-import { RouteComponentProps } from 'react-router-dom';
-import { ApplicationState } from '../store';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as PetsStore from '../store/Pets';
 import Loading from './Loading';

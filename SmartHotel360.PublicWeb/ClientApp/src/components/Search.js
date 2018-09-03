@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import * as moment from 'moment';
+import { bindActionCreators } from 'redux';
 import * as $ from 'jquery';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ApplicationState } from '../store';
 import * as SearchStore from '../store/Search';
 import Loading from './Loading';
 import IncrementDecrement from './IncrementDecrement';

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import ConferenceRoomsFeatures from './ConferenceRoomsFeatures';
-import { ApplicationState } from '../store';
 import { connect } from 'react-redux';
 import Rooms from './Rooms';
 import * as RoomsState from '../store/Rooms';

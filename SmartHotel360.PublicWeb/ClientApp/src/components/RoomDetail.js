@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ApplicationState } from '../store';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import SearchInfo from './SearchInfo';
 import * as RoomDetailStore from '../store/RoomDetail';
 import * as SearchStore from '../store/Search';

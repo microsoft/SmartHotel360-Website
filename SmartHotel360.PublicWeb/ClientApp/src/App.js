@@ -2,8 +2,9 @@
 import { Route } from 'react-router';
 import Layout from './components/Layout';
 import Home from './components/Home';
-import Counter from './components/Counter';
-import FetchData from './components/FetchData';
+import SearchRooms from './components/SearchRooms';
+import Pets from './components/Pets';
+import RoomDetail from './components/RoomDetail';
 
 export default () => (
   <Layout>

@@ -17,7 +17,8 @@ const initialState = {
 
 export const actionCreators = {
     requestFeatured: () => (dispatch, getState) => {
-
+        console.log(settings);
+        debugger
        let fetchTask = fetch(`${settings.urls.hotels}Featured`)
             .then(response => response.json())
             .then(data => {
