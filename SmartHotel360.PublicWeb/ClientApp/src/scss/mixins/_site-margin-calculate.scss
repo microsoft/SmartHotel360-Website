@@ -1,0 +1,7 @@
+@function calculate($size, $length, $margin, $factor) {
+    @return ((100% -((($size + $margin) * $length) + $margin * 2)) / 2) * $factor;
+}
+
+@function correction($value) {
+    @return -($value + ((100% - ($value * 2)) * ($value / 100%)) / 2);
+}

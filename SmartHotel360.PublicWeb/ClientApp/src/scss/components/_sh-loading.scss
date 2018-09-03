@@ -1,0 +1,58 @@
+@import '../base/variables';
+@import '../base/common';
+
+// author: https://projects.lukehaas.me/css-loaders/
+
+.sh-loading {
+    animation-delay: -.16s;
+    color: $color-brand;
+    display: inline-block;
+    font-size: $font-size-m * .85;
+    position: relative;
+    text-indent: -9999em;
+    transform: translateZ(0);
+
+    &,
+    &:before,
+    &:after {
+        animation: loading 1.5s infinite ease-in-out;
+        animation-fill-mode: both;
+        border-radius: 50%;
+        height: 1em;
+        top: -2.5em;
+        width: 1em;
+    }
+
+    &--bright {
+        color: $color-foreground-brighter;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+    }
+
+    &:before {
+        animation-delay: -.32s;
+        left: -1em;
+    }
+
+    &:after {
+        animation-delay: .32s;
+        left: 1em;
+    }
+
+    @keyframes loading {
+        0%,
+        80%,
+        100% {
+            box-shadow: 0 2.5em 0 -1.3em;
+        }
+
+        40% {
+            box-shadow: 0 2.5em 0 0;
+        }
+    }
+}

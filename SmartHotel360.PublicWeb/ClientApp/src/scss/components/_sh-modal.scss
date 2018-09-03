@@ -1,0 +1,76 @@
+﻿@import '../base/variables';
+
+.sh-modal {
+    overflow: auto;
+
+    @media screen and (min-width: $media-screen-l) {
+        width: 40vw;
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-title {
+        background-color: $color-secondary-brighter;
+        display: flex;
+        font-size: $font-size-l;
+        font-weight: $font-weight-semibold;
+        justify-content: space-between;
+        padding: 1.5rem;
+    }
+
+    &-picture {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 13rem;
+        width: 100%;
+    }
+
+    &-body {
+        max-height: 25rem;
+        padding: 2rem 1.5rem .5rem;
+    }
+
+    &-row {
+        padding: .6rem 0;
+    }
+
+    &-footer {
+        align-items: center;
+        background-color: $color-brand-dark;
+        display: flex;
+        justify-content: flex-end;
+        padding: 1.5rem;
+    }
+
+    &-total {
+        color: $color-background-brighter;
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+
+    &-price {
+        font-size: $font-size-xl;
+    }
+
+    &-logo {
+        width: 10rem;
+    }
+
+    &-small {
+        font-size: $font-size-xs;
+    }
+
+    &-xsmall {
+        font-size: $font-size-xxs;
+    }
+
+    &-close {
+        cursor: pointer;
+        font-size: $font-size-s;
+    }
+}

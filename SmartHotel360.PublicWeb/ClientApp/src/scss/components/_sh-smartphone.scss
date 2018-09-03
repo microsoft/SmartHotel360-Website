@@ -1,0 +1,192 @@
+﻿@import '../base/variables';
+
+.sh-smartphone {
+    margin-bottom: 5.5rem;
+    overflow: hidden;
+    position: relative;
+
+    @media screen and (min-width: $media-screen-m) {
+        padding-top: 4rem;
+    }
+
+    &-wrapper {
+
+        @media screen and (min-width: $media-screen-m) {
+            $margin: 5rem;
+            margin: 6rem auto 0;
+            max-width: 81.5rem;
+            padding-left: $margin;
+            padding-right: 2rem;
+        }
+
+        @media screen and (min-width: $media-screen-xl) {
+            $margin: 5rem;
+            margin: 6rem auto 0;
+            max-width: 81.5rem;
+            padding-left: $margin;
+            padding-right: 2rem;
+        }
+    }
+
+    &-title {
+        color: $color-brand-dark;
+        display: block;
+        font-size: $font-size-xxl;
+        line-height: 1.3;
+        margin-bottom: .7rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 70%;
+
+        @media screen and (min-width: $media-screen-xs) {
+            margin-bottom: 2rem;
+            max-width: 720px;
+            text-align: left;
+            width: 86%;
+        }
+
+        @media screen and (min-width: $media-screen-m) {
+            margin-left: 0;
+            width: 40%;
+        }
+    }
+
+    &-description {
+        color: $color-brand-dark;
+        font-family: FiraSans;
+        font-size: $font-size-m;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 86%;
+
+        @media screen and (min-width: $media-screen-xs) {
+            line-height: 2;
+            margin-bottom: 3.5rem;
+            max-width: 45rem;
+            text-align: left;
+        }
+
+        @media screen and (min-width: $media-screen-m) {
+            margin-left: 0;
+            width: 50%;
+        }
+
+        @media screen and (min-width: $media-screen-xl) {
+            max-width: 32rem;
+        }
+
+        @media screen and (min-width: $media-screen-xl) {
+            max-width: 65rem;
+        }
+    }
+
+    &-image {
+        $margin: -4rem;
+        bottom: $margin;
+        height: auto;
+        left: -5%;
+        margin-top: $margin;
+        position: relative;
+        width: 115%;
+        z-index: 10;
+
+        @media screen and (min-width: $media-screen-xs) {
+            left: -1%;
+            width: 105%;
+        }
+
+        @media screen and (min-width: $media-screen-m) {
+            bottom: 0;
+            left: auto;
+            margin-top: 0;
+            max-width: 50vw;
+            position: absolute;
+            right: -4%;
+            top: 9rem;
+            transform: translateY(-20%);
+        }
+    }
+
+    &-quote {
+        $padding-horizontal: 1.5rem;
+        $padding-vertical: 4.5rem;
+        background-color: $color-secondary-brighter;
+        min-height: 18rem;
+        padding-bottom: $padding-vertical;
+        padding-left: $padding-horizontal;
+        padding-right: $padding-horizontal;
+        padding-top: $padding-vertical;
+        z-index: 0;
+
+        @media screen and (min-width: $media-screen-xs) {
+            $padding-vertical: 6rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: $padding-vertical;
+            padding-top: $padding-vertical;
+        }
+
+        @media screen and (min-width: $media-screen-m) {
+            $padding-vertical: 6rem;
+            top: 0;
+        }
+    }
+
+    &-quote_loading {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    &-quote_container {
+        margin: 0 auto;
+        max-width: 58rem;
+        position: relative;
+    }
+
+    &-quote_name {
+        bottom: -3rem;
+        position: absolute;
+        right: 0;
+    }
+
+    &-quote_text {
+        color: $color-brand-dark;
+        font-family: FiraSans;
+        font-size: $font-size-m;
+        font-style: italic;
+        font-weight: $font-weight-medium;
+        line-height: 2.3;
+        margin-bottom: 1.7rem;
+
+        @media screen and (min-width: $media-screen-xs) {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 45rem;
+        }
+    }
+
+    &-quote_author {
+        color: $color-brand-dark;
+        font-weight: $font-weight-medium;
+        text-align: right;
+
+        @media screen and (min-width: $media-screen-xs) {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 45rem;
+        }
+    }
+
+    &-quote_icon {
+        display: block;
+        font-size: 1.5rem;
+        transform: translate(-1.75rem, 1.5rem);
+    }
+}

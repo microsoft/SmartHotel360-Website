@@ -1,0 +1,59 @@
+﻿@import '../base/variables';
+@import '../mixins/site-margins';
+
+.sh-rooms {
+    $factor: 1.25;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto 5.5rem;
+    max-width: 100%;
+
+    &-item {
+        height: $item-xs-size;
+        margin: $item-xs-margin;
+        width: $item-xs-size;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        @media screen and (min-width: $media-screen-s) {
+            height: $item-s-size;
+            margin: $item-s-margin;
+            width: $item-s-size;
+        }
+
+        @media screen and (min-width: $media-screen-m) {
+            height: $item-m-size;
+            margin: $item-m-margin;
+            width: $item-m-size;
+        }
+
+        @media screen and (min-width: $media-screen-l) {
+            height: $item-l-size;
+            margin: $item-l-margin;
+            width: $item-l-size;
+        }
+
+        @media screen and (min-width: $media-screen-xl) {
+            height: $item-xl-size;
+            margin: $item-xl-margin;
+            width: $item-xl-size;
+        }
+    }
+
+    &-title {
+        @include site-margins;
+        clear: both;
+        display: block;
+        font-size: $font-size-xxl;
+        font-weight: $font-weight-medium;
+        padding: 2rem 0;
+        text-align: left;
+        width: 100%;
+
+    }
+}

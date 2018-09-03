@@ -1,0 +1,48 @@
+﻿@import '../base/variables';
+
+.sh-filter_price {
+    padding: 0 1rem;
+
+    &-range {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: .5rem;
+    }
+
+    &-value {
+        color: $color-brand;
+        font-size: $font-size-s;
+        padding: .5rem 0;
+        text-align: center;
+    }
+
+    .rc-slider {
+        margin: 0 auto;
+        width: calc(100% - #{1rem * 2});
+    }
+
+    .rc-slider-handle {
+        $size: 1.125rem;
+        background-color: $color-brand;
+        border-color: $color-brand;
+        box-shadow: 0 0 5px $color-brand;
+        height: $size;
+        margin-left: -$size / 2;
+        margin-top: -($size / 2) * .85;
+        width: $size;
+
+        &:active,
+        &:hover {
+            border-color: $color-brand;
+        }
+    }
+
+    .rc-slider-track {
+        background-color: $color-brand;
+    }
+
+    .rc-slider-rail {
+        background-color: $color-brand-brighter;
+    }
+}

@@ -1,0 +1,95 @@
+﻿@import '../base/variables';
+
+.sh-room {
+    $box-height: 23.3rem;
+    $box-margin: 1rem;
+
+    background-color: $color-background-brighter;
+    width: 100%;
+
+    &-image {
+        background-position: center;
+        background-size: cover;
+        height: 19rem;
+    }
+
+    &-button {
+        background: $color-secondary;
+        color: $color-background-brighter;
+        cursor: default;
+        font-size: $font-size-s;
+        line-height: 3rem;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:hover {
+            background-color: lighten($color-secondary, 10%);
+            color: $color-foreground-brighter;
+            transition: background-color $animation-speed-default ease;
+        }
+
+        &:focus,
+        &:active {
+            box-shadow: none !important;
+            color: $color-foreground-brighter;
+            outline: none !important;
+        }
+    }
+
+    &-star {
+        color: $color-foreground-bright;
+        font-size: $font-size-xs;
+        margin: 0 .2rem;
+
+        &.is-active {
+            color: $color-brand;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &-info {
+        display: flex;
+        padding: 1rem 0;
+    }
+
+    &-column {
+        display: flex;
+        flex-direction: column;
+
+        &--left {
+            flex: 1 auto;
+            width: 50%;
+        }
+
+        &--right {
+            text-align: right;
+        }
+    }
+
+    &-text {
+        color: $color-background-darker;
+        font-family: FiraSans;
+    }
+
+    &-title {
+        color: $color-background-darker;
+        font-weight: $font-weight-semibold;
+    }
+
+    &-price {
+        color: $color-background-darker;
+        font-weight: $font-weight-semibold;
+    }
+
+    &-label {
+        color: $color-background-darker;
+        font-size: $font-size-s;
+    }
+
+    &-row {
+        padding: .5rem 0;
+    }
+}
