@@ -1,167 +1,63 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.2.0-preview1-35029" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.SnapshotCollector">
-      <Version>1.0.11</Version>
+      <Version>1.3.0</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.0-preview1-35029" />
     <PackageReference Include="WindowsAzure.Storage">
-      <Version>8.5.0</Version>
+      <Version>9.3.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.DocumentDB.Core">
-      <Version>1.6.0</Version>
+      <Version>2.0.0-preview2</Version>
     </PackageReference>
+  </ItemGroup>
 
-  </ItemGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-  </ItemGroup>
 
   <ItemGroup>
-    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
-    <Content Remove="ClientApp\**" />
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
+
 
   <ItemGroup>
-    <None Remove="ClientApp\boot-client.tsx" />
-    <None Remove="ClientApp\boot-server.tsx" />
-    <None Remove="ClientApp\components\Auth.tsx" />
-    <None Remove="ClientApp\components\Checkbox.tsx" />
-    <None Remove="ClientApp\components\ConferenceRoomsFeatures.tsx" />
-    <None Remove="ClientApp\components\Filter.tsx" />
-    <None Remove="ClientApp\components\FilterAvailability.tsx" />
-    <None Remove="ClientApp\components\FilterCancelation.tsx" />
-    <None Remove="ClientApp\components\FilterNeighborhood.tsx" />
-    <None Remove="ClientApp\components\FilterPrice.tsx" />
-    <None Remove="ClientApp\components\FilterRating.tsx" />
-    <None Remove="ClientApp\components\FilterRelevance.tsx" />
-    <None Remove="ClientApp\components\FilterReviews.tsx" />
-    <None Remove="ClientApp\components\Filters.tsx" />
-    <None Remove="ClientApp\components\FilterServices.tsx" />
-    <None Remove="ClientApp\components\Footer.tsx" />
-    <None Remove="ClientApp\components\Home.tsx" />
-    <None Remove="ClientApp\components\IncrementDecrement.tsx" />
-    <None Remove="ClientApp\components\Layout.tsx" />
-    <None Remove="ClientApp\components\Loading.tsx" />
-    <None Remove="ClientApp\components\ModalDialog.tsx" />
-    <None Remove="ClientApp\components\NavMenu.tsx" />
-    <None Remove="ClientApp\components\Pets.tsx" />
-    <None Remove="ClientApp\components\Room.tsx" />
-    <None Remove="ClientApp\components\RoomDetail.tsx" />
-    <None Remove="ClientApp\components\RoomHighlighted.tsx" />
-    <None Remove="ClientApp\components\Rooms.tsx" />
-    <None Remove="ClientApp\components\Search.tsx" />
-    <None Remove="ClientApp\components\SearchInfo.tsx" />
-    <None Remove="ClientApp\components\SearchRooms.tsx" />
-    <None Remove="ClientApp\components\Switch.tsx" />
-    <None Remove="ClientApp\configureStore.ts" />
-    <None Remove="ClientApp\routes.tsx" />
-    <None Remove="ClientApp\Settings.ts" />
-    <None Remove="ClientApp\store\ConferenceRoomsFeatures.ts" />
-    <None Remove="ClientApp\store\Home.ts" />
-    <None Remove="ClientApp\store\index.ts" />
-    <None Remove="ClientApp\store\ModalDialog.ts" />
-    <None Remove="ClientApp\store\NavMenu.ts" />
-    <None Remove="ClientApp\store\Pets.ts" />
-    <None Remove="ClientApp\store\RoomDetail.ts" />
-    <None Remove="ClientApp\store\Rooms.ts" />
-    <None Remove="ClientApp\store\Search.ts" />
-    <None Remove="ClientApp\store\User.ts" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="postcss.config.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\assets\images\facebook.svg" />
-    <None Include="wwwroot\assets\images\instagram.svg" />
-    <None Include="wwwroot\assets\images\twitter.svg" />
-    <None Include=".ts-lint.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\boot-client.tsx" />
-    <TypeScriptCompile Include="ClientApp\boot-server.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Auth.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Checkbox.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\ConferenceRoomsFeatures.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Filter.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\FilterAvailability.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\FilterCancelation.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\FilterNeighborhood.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\FilterPrice.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\FilterRating.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\FilterRelevance.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\FilterReviews.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Filters.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\FilterServices.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Footer.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Home.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\IncrementDecrement.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Layout.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Loading.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\ModalDialog.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\NavMenu.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Pets.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Room.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\RoomDetail.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\RoomHighlighted.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Rooms.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Search.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\SearchInfo.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\SearchRooms.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Switch.tsx" />
-    <TypeScriptCompile Include="ClientApp\configureStore.ts" />
-    <TypeScriptCompile Include="ClientApp\routes.tsx" />
-    <TypeScriptCompile Include="ClientApp\Settings.ts" />
-    <TypeScriptCompile Include="ClientApp\store\ConferenceRoomsFeatures.ts" />
-    <TypeScriptCompile Include="ClientApp\store\Home.ts" />
-    <TypeScriptCompile Include="ClientApp\store\index.ts" />
-    <TypeScriptCompile Include="ClientApp\store\ModalDialog.ts" />
-    <TypeScriptCompile Include="ClientApp\store\NavMenu.ts" />
-    <TypeScriptCompile Include="ClientApp\store\Pets.ts" />
-    <TypeScriptCompile Include="ClientApp\store\RoomDetail.ts" />
-    <TypeScriptCompile Include="ClientApp\store\Rooms.ts" />
-    <TypeScriptCompile Include="ClientApp\store\Search.ts" />
-    <TypeScriptCompile Include="ClientApp\store\User.ts" />
-  </ItemGroup>
-
-  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
     </Exec>
     <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
-
-    <!-- In development, the dist files won't exist on the first run or when cloning to
-         a different machine, so rebuild them if not already present. -->
-    <Message Importance="high" Text="Performing first-run Webpack build..." />
-    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
   </Target>
 
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-    <Exec Command="npm install" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod" />
-    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
 
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
-      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
+      <DistFiles Include="$(SpaRoot)build\**; $(SpaRoot)build-ssr\**" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

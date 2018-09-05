@@ -1,0 +1,68 @@
+@import '../base/variables';
+@import './site-margin-calculate';
+
+@mixin site-margins($factor: 1) {
+
+    // Paddings
+    $padding-site-default: calculate($item-s-size, $item-s-length, $item-s-margin, $factor);
+    $padding-site-m: calculate($item-m-size, $item-m-length, $item-m-margin, $factor);
+    $padding-site-l: calculate($item-l-size, $item-l-length, $item-l-margin, $factor);
+    $padding-site-xl: calculate($item-xl-size, $item-xl-length, $item-xl-margin, $factor);
+
+    margin-left: $padding-site-default;
+    margin-right: $padding-site-default;
+
+    @media screen and (min-width: $media-screen-m) {
+        margin-left: $padding-site-m;
+        margin-right: $padding-site-m;
+    }
+
+    @media screen and (min-width: $media-screen-l) {
+        margin-left: $padding-site-l;
+        margin-right: $padding-site-l;
+    }
+
+    @media screen and (min-width: $media-screen-xl) {
+        margin-left: $padding-site-xl;
+        margin-right: $padding-site-xl;
+    }
+}
+
+@mixin site-margins-remove($factor: 1) {
+    // Paddings
+    $padding-site-default: calculate($item-s-size, $item-s-length, $item-s-margin, $factor);
+    $padding-site-m: calculate($item-m-size, $item-m-length, $item-m-margin, $factor);
+    $padding-site-l: calculate($item-l-size, $item-l-length, $item-l-margin, $factor);
+    $padding-site-xl: calculate($item-xl-size, $item-xl-length, $item-xl-margin, $factor);
+
+
+    margin-left: (correction($padding-site-default));
+    margin-right: (correction($padding-site-default));
+    padding-left: -(correction($padding-site-default));
+    padding-right: -(correction($padding-site-default));
+    width: (100% + -(correction($padding-site-default) * 2));
+
+    @media screen and (min-width: $media-screen-m) {
+        margin-left: (correction($padding-site-m));
+        margin-right: (correction($padding-site-m));
+        padding-left: -(correction($padding-site-m));
+        padding-right: -(correction($padding-site-m));
+        width: (100% + -(correction($padding-site-m) * 2));
+    }
+
+    @media screen and (min-width: $media-screen-l) {
+        margin-left: (correction($padding-site-l));
+        margin-right: (correction($padding-site-l));
+        padding-left: -(correction($padding-site-l));
+        padding-right: -(correction($padding-site-l));
+        width: (100% + -(correction($padding-site-l) * 2));
+    }
+
+    @media screen and (min-width: $media-screen-xl) {
+        margin-left: (correction($padding-site-xl));
+        margin-right: (correction($padding-site-xl));
+        padding-left: -(correction($padding-site-xl));
+        padding-right: -(correction($padding-site-xl));
+        width: (100% + -(correction($padding-site-xl) * 2));
+    }
+}

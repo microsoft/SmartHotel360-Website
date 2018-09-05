@@ -288,3 +288,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 .DS_Store
+SmartHotel360.PublicWeb/ClientApp/src/scss/site.css
