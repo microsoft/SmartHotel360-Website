@@ -22,20 +22,5 @@ namespace SmartHotel360.PublicWeb.Controllers
         {
             return _LocalSettings;
         }
-
-        public IActionResult Exception([FromQuery] bool throwException = false)
-        {
-            try
-            {
-                if (throwException) ExceptionGenerator.GenerateException();
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                var wrappingException = new ApplicationException("This is a test exception", ex);
-
-                throw wrappingException;
-            }
-        }
     }
 }
