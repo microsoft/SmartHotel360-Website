@@ -25,7 +25,7 @@ namespace SmartHotel360.PublicWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            services.AddOptions();
             services.Configure<LocalSettings>(Configuration);
             services.AddSingleton<SettingsService>( (sp) => SettingsService.Load(sp.GetService<IOptions<LocalSettings>>().Value));
             services.AddSingleton<ITelemetryProcessorFactory>(new SnapshotCollectorTelemetryProcessorFactory());
