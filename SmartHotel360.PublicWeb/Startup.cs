@@ -26,8 +26,7 @@ namespace SmartHotel360.PublicWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
-            services.AddApplicationInsightsTelemetry("a77c8322-1a2f-41ac-946b-d1d85a84451d");
+            services.AddOptions();
             services.Configure<LocalSettings>(Configuration);
             services.AddSingleton<SettingsService>( (sp) => SettingsService.Load(sp.GetService<IOptions<LocalSettings>>().Value));
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
+using Microsoft.Extensions.Options;
 using SmartHotel360.PublicWeb.Models.Settings;
 using SmartHotel360.PublicWeb.Services;
 using System;
@@ -20,13 +21,13 @@ namespace SmartHotel360.PublicWeb.Controllers
     [Route("api/pets")]
     public class PetsApiController : Controller
     {
-        private readonly SettingsService _settingsSvc;
+        private readonly LocalSettings _settings;
         private readonly string dbName = "pets";
         private readonly string colName = "checks";
 
-        public PetsApiController(SettingsService settingsSvc)
+        public PetsApiController(IOptions<LocalSettings> settings)
         {
-            _settingsSvc = settingsSvc;
+            _settings = settings.Value;
         }
 
         [HttpPost]
@@ -55,8 +56,8 @@ namespace SmartHotel360.PublicWeb.Controllers
         private async Task<Guid> UploadDocument(Uri uri, string petName)
         {
 
-            var endpoint = new Uri(_settingsSvc.LocalSettings.PetsConfig.CosmosUri);
-            var auth = _settingsSvc.LocalSettings.PetsConfig.CosmosKey;
+            var endpoint = new Uri(_settings.PetsConfig.CosmosUri);
+            var auth = _settings.PetsConfig.CosmosKey;
             var client = new DocumentClient(endpoint, auth);
             var identifier = Guid.NewGuid();
 
@@ -80,8 +81,8 @@ namespace SmartHotel360.PublicWeb.Controllers
 
         private async Task<Uri> UploadPetToStorage(byte[] content)
         {
-            var storageName = _settingsSvc.LocalSettings.PetsConfig.BlobName;
-            var auth = _settingsSvc.LocalSettings.PetsConfig.BlobKey;
+            var storageName = _settings.PetsConfig.BlobName;
+            var auth = _settings.PetsConfig.BlobKey;
             var uploader = new PhotoUploader(storageName, auth);
             var blob = await uploader.UploadPetPhoto(content);
             return blob.Uri;
@@ -91,8 +92,8 @@ namespace SmartHotel360.PublicWeb.Controllers
         public IActionResult GetUploadState(Guid identifier)
         {
 
-            var endpoint = new Uri(_settingsSvc.LocalSettings.PetsConfig.CosmosUri);
-            var auth = _settingsSvc.LocalSettings.PetsConfig.CosmosKey;
+            var endpoint = new Uri(_settings.PetsConfig.CosmosUri);
+            var auth = _settings.PetsConfig.CosmosKey;
             var client = new DocumentClient(endpoint, auth);
 
             var collectionUri = UriFactory.CreateDocumentCollectionUri(dbName, colName);
