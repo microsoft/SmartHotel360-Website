@@ -1,28 +1,31 @@
-FROM microsoft/aspnetcore:2.0 AS base
+FROM microsoft/dotnet:2.2.0-preview1-aspnetcore-runtime-alpine3.8 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM base as withnode
-RUN apt-get update && apt-get install -my wget gnupg
-RUN apt-get -qq update && apt-get -qqy --no-install-recommends install \
-    git \
-    unzip
-
-RUN curl -sL https://deb.nodesource.com/setup_6.x |  bash -
-RUN apt-get install -y nodejs
-
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM microsoft/dotnet:2.2.100-preview1-sdk-alpine AS build
 WORKDIR /src
 COPY SmartHotel360.PublicWeb.csproj .
 RUN dotnet restore
 COPY . .
 RUN dotnet build -c Release -o /webapp
 
-FROM build AS publish
+
+FROM node:8.12.0-alpine as node
+WORKDIR /src
+COPY . .
+WORKDIR /src/ClientApp
+RUN npm install
 RUN npm rebuild node-sass
+RUN npm run build
+RUN cp -r build/* /src/wwwroot
+
+FROM build AS publish
+WORKDIR /src/ClientApp
+WORKDIR /src
 RUN dotnet publish -c Release -o /webapp
 
-FROM withnode AS final
+FROM base AS final
 WORKDIR /app
 COPY --from=publish /webapp .
+COPY --from=node /src/wwwroot ./wwwroot
 ENTRYPOINT ["dotnet", "SmartHotel360.PublicWeb.dll"]
