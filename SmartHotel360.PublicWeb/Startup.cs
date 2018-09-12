@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using SmartHotel360.PublicWeb.Models.Settings;
 using SmartHotel360.PublicWeb.Services;
+using System;
 
 namespace SmartHotel360.PublicWeb
 {
@@ -28,7 +29,13 @@ namespace SmartHotel360.PublicWeb
             services.AddOptions();
             services.Configure<LocalSettings>(Configuration);
             services.AddSingleton<SettingsService>( (sp) => SettingsService.Load(sp.GetService<IOptions<LocalSettings>>().Value));
-            services.AddSingleton<ITelemetryProcessorFactory>(new SnapshotCollectorTelemetryProcessorFactory());
+
+            // Configure SnapshotCollector from application settings
+            var t = Configuration.GetSection(nameof(SnapshotCollectorConfiguration));
+            services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
+
+            // Add SnapshotCollector telemetry processor.
+            services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
 
             // Our custom services
             if (!string.IsNullOrEmpty(Configuration["USE_NULL_TESTIMONIALS_SERVICE"]))
@@ -74,8 +81,16 @@ namespace SmartHotel360.PublicWeb
 
         private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
         {
-            public ITelemetryProcessor Create(ITelemetryProcessor next) =>
-                new SnapshotCollectorTelemetryProcessor(next);
+            private readonly IServiceProvider _serviceProvider;
+
+            public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
+                _serviceProvider = serviceProvider;
+
+            public ITelemetryProcessor Create(ITelemetryProcessor next)
+            {
+                var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
+                return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+            }
         }
 
     }
