@@ -40,7 +40,7 @@ class Pets extends Component {
             <div className='sh-pets-margin'></div>
             <h2 className='sh-pets-subtitle'>Do you want to know if your pet can accompany you?</h2>
 
-            <section className={'sh-uploader ' + (this.props.isThinking || this.props.isUploading ? 'is-loading' : 'is-empty') + ' ' + (this.props.status.approved === true ? 'is-ok' : '') + ' ' + (this.props.status.approved === false ? 'is-bad' : '')}
+            <section className={'sh-uploader ' + (this.props.isThinking || this.props.isUploading ? 'is-loading' : 'is-empty') + ' ' + (this.props.approved === true ? 'is-ok' : '') + ' ' + (this.props.approved === false ? 'is-bad' : '')}
                      onClick={this.onClickUploader}>
 
                 {this.props.image ? <div className='sh-uploader-image' style={{ backgroundImage: `url(${this.props.image})` }}></div> : <div className='sh-uploader-avatar'></div>}
@@ -50,12 +50,12 @@ class Pets extends Component {
                 </div>
             </section>
 
-            {!this.props.isThinking && !this.props.isUploading && this.props.status.approved === null ? <span className='sh-pets-smalltitle'>Click on the avatar to upload your picture</span> : <span></span>}
+            {!this.props.isThinking && !this.props.isUploading && this.props.approved === null ? <span className='sh-pets-smalltitle'>Click on the avatar to upload your picture</span> : <span></span>}
             {this.props.isUploading ? <span className='sh-pets-smalltitle'>Uploading the image...</span> : <span></span>}
             {this.props.isThinking ? <span className='sh-pets-smalltitle'>Processing the image...</span> : <span></span>}
 
-            {this.props.status.approved === true ? <span className='sh-pets-smalltitle is-ok'>Your pet looks like a {this.props.status.message} and is accepted :)</span> : <span></span>}
-            {this.props.status.approved === false ? <span className='sh-pets-smalltitle is-bad'>Sorry your pet seems to be a {this.props.status.message} and we can't afford it :(</span> : <span></span>}
+            {this.props.approved === true ? <span className='sh-pets-smalltitle is-ok'>Your pet looks like a {this.props.message} and is accepted :)</span> : <span></span>}
+            {this.props.approved === false ? <span className='sh-pets-smalltitle is-bad'>Sorry your pet seems to be a {this.props.message} and we can't afford it :(</span> : <span></span>}
 
             <input className='is-hidden' ref='nativeUpload' type='file' onChange={this.onFileChange} />
 
