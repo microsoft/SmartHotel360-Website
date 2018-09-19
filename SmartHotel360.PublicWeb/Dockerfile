@@ -2,7 +2,7 @@ FROM microsoft/dotnet:2.2.0-preview1-aspnetcore-runtime-alpine3.8 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/dotnet:2.2.100-preview1-sdk-alpine AS build
+FROM microsoft/dotnet:2.2.100-preview2-sdk-alpine AS build
 WORKDIR /src
 COPY SmartHotel360.PublicWeb.csproj .
 RUN dotnet restore
