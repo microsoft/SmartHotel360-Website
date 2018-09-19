@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.2.0-preview1-aspnetcore-runtime-alpine3.8 AS base
+FROM microsoft/dotnet:2.2.0-preview2-aspnetcore-runtime-alpine3.8 AS base
 WORKDIR /app
 EXPOSE 80
 
