@@ -13,6 +13,7 @@ For this reference app scenario, we built several consumer and line-of-business 
 * [Sentiment Analysis](https://github.com/Microsoft/SmartHotel360-Sentiment-Analysis-App)
 * [Migrating Internal apps to Azure](https://github.com/Microsoft/SmartHotel360-internal-booking-apps)
 * [Original Backend Services](https://github.com/Microsoft/SmartHotel360-Azure-backend)
+* [How Containers Enable Local Development](https://github.com/microsoft/SmartHotel360-ContainersForLocalDev)
 
 # SmartHotel360 - Public Web 
 Welcome to the repository containing the public web site of the SmartHotel360. SmartHotel360 has multiple apps that share a common Azure backend, including a public website where hotel guests can book a room, smart conference rooms, and even include their accompanying family travelers and their pets! The site was built using ASP.NET Core 2.0. 
