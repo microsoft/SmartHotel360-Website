@@ -14,7 +14,6 @@ import configureStore from './store/configureStore';
 import App from './App';
 import { loadSettings } from './Settings';
 import registerServiceWorker from './registerServiceWorker';
-import { appinsights } from './appinsights';
 
 
 
@@ -28,7 +27,6 @@ const store = configureStore(history, initialState);
 
 const init = async () => {
     await loadSettings();
-    appinsights();
 
     const rootElement = document.getElementById('root');
 

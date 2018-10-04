@@ -14,6 +14,5 @@
         public Urls Urls { get; set; }
         public Tokens Tokens { get; set; }
         public B2c B2c { get; set; }
-        public AppinsightsSettings ApplicationInsights { get; set; }
-    }    
+    }
 }

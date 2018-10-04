@@ -22,10 +22,6 @@ class Settings {
         picUrl: '',
         userId: ''
     };
-
-    applicationInsights = {
-        instrumentationKey: ''
-    };
 }
 
 let clientSettings = new Settings();
