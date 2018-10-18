@@ -16,11 +16,11 @@
     },
     "signalr_sku": {
       "type": "string",
-      "defaultValue": "Free"
+      "defaultValue": "Standard"
     },
     "signalr_capacity": {
       "type": "int",
-      "defaultValue": 1
+      "defaultValue": 2
     }
   },
   "variables": {
