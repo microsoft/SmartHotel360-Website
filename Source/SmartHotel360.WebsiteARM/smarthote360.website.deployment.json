@@ -1,0 +1,194 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "Crentral US"
+    },
+    "serviceplan_sku": {
+      "type": "string",
+      "defaultValue": "Standard"
+    },
+    "serviceplan_sku_code": {
+      "type": "string",
+      "defaultValue": "S1"
+    },
+    "signalr_sku": {
+      "type": "string",
+      "defaultValue": "Basic_DS2"
+    },
+    "signalr_capacity": {
+      "type": "int",
+      "defaultValue": "2"
+    }
+  },
+  "variables": {
+    "cosmosdb_name": "[concat('websitecosmosdb-',uniqueString(resourceGroup().id))]",
+    "function_name": "[concat('websitefunction-',uniqueString(resourceGroup().id))]",
+    "storage_name": "[concat('websitestorage-',uniqueString(resourceGroup().id),23)]",
+    "vision_name": "[concat('websitevisionapi-',uniqueString(resourceGroup().id))]",
+    "website_name": "[concat('smarthotel360',uniqueString(resourceGroup().id))]",
+    "serviceplan_name": "[concat('appserviceplan',uniqueString(resourceGroup().id))]",
+    "signalr_name": "[concat('websitesignalr-',uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "kind": "GlobalDocumentDB",
+      "name": "[variables('cosmosdb_name')]",
+      "apiVersion": "2015-04-08",
+      "location": "[parameters('location')]",
+      "tags": {
+        "defaultExperience": "DocumentDB"
+      },
+      "scale": null,
+      "properties": {
+        "databaseAccountOfferType": "Standard",
+        "consistencyPolicy": {
+          "defaultConsistencyLevel": "Session",
+          "maxIntervalInSeconds": 5,
+          "maxStalenessPrefix": 100
+        },
+        "name": "[variables('cosmosdb_name')]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "kind": "functionapp",
+      "name": "[variables('function_name')]",
+      "apiVersion": "2016-03-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "name": "[variables('function_name')]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "FUNCTIONS_WORKER_RUNTIME",
+              "value": "dotnet"
+            },
+            {
+              "name": "AzureWebJobsStorage",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storage_name'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storage_name')), '2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "FUNCTIONS_EXTENSION_VERSION",
+              "value": "~2"
+            },
+            {
+              "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storage_name'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storage_name')), '2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "WEBSITE_CONTENTSHARE",
+              "value": "[concat(toLower(variables('function_name')), '8ea4')]"
+            },
+            {
+              "name": "WEBSITE_NODE_DEFAULT_VERSION",
+              "value": "8.11.1"
+            }
+          ]
+        },
+        "clientAffinityEnabled": false,
+        "reserved": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storage_name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storage_name')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "ComputerVision",
+      "name": "[variables('vision_name')]",
+      "apiVersion": "2016-02-01-preview",
+      "location": "[parameters('location')]",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('website_name')]",
+      "apiVersion": "2016-03-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+              "value": "[reference(resourceId('microsoft.insights/components/', variables('website_name')), '2015-05-01').InstrumentationKey]"
+            }
+          ]
+        },
+        "name": "[variables('website_name')]"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', variables('serviceplan_name'))]",
+        "[resourceId('microsoft.insights/components/', variables('website_name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "sku": {
+        "Tier": "[parameters('serviceplan_sku')]",
+        "Name": "[parameters('serviceplan_sku_code')]"
+      },
+      "name": "[variables('serviceplan_name')]",
+      "apiVersion": "2016-09-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "name": "[variables('serviceplan_name')]",
+        "workerSizeId": "0",
+        "numberOfWorkers": "1"
+      }
+    },
+    {
+      "type": "microsoft.insights/components",
+      "name": "[variables('website_name')]",
+      "apiVersion": "2015-05-01",
+      "location": "East US",
+      "tags": {
+        "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('website_name'))]": "Resource"
+      },
+      "properties": {
+        "ApplicationId": "[variables('website_name')]",
+        "Request_Source": "IbizaWebAppExtensionCreate"
+      }
+    },
+    {
+      "type": "Microsoft.SignalRService/SignalR",
+      "name": "[variables('signalr_name')]",
+      "apiVersion": "2018-03-01-preview",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('signalr_sku')]",
+        "capacity": "[parameters('signalr_capacity')]"
+      },
+      "properties": {
+        "domainLabel": "[variables('signalr_name')]"
+      }
+    }
+  ],
+  "outputs": {
+    "function": {
+      "type": "string",
+      "value": "[variables('function_name')]"
+    },
+    "web": {
+      "type": "string",
+      "value": "[variables('website_name')]"
+    }
+  }
+}

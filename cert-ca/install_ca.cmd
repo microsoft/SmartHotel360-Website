@@ -1,1 +1,0 @@
-certutil –addstore -enterprise –f "Root" myCA.pem

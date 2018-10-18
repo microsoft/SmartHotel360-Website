@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="lib\Microsoft.ProjectOxford.Vision.dll" />
+  </ItemGroup>
+  <ItemGroup>    
+   <PackageReference Include="Gremlin.Net" Version="3.3.3" />  
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0" />    
+    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.1.0-preview" />    
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.19" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.CosmosDB" Version="3.0.1-beta2" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.0-beta8" />
+    <PackageReference Include="AzureAdvocates.WebJobs.Extensions.SignalRService" Version="0.3.0-alpha-hotfix1" />    
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ProjectOxford.Vision">
+      <HintPath>lib\Microsoft.ProjectOxford.Vision.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+</Project>

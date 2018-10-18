@@ -1,0 +1,18 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<Storage Account Connection String>",
+    "AzureWebJobsDashboard": "<Storage Account Connection String>",
+    "cosmos_uri": "<Cosmos DB (SQL API) URL (eg. https://petpictureuploadmetadata.documents.azure.com:443/)>",
+    "cosmos_key": "<Cosmos DB (SQL API) Key>",
+    "constr": "<Cosmos DB (SQL API) Connection String>",
+    "MicrosoftVisionApiKey": "<Cognitive Services Vision API Key>",
+    "MicrosoftVisionApiEndpoint": "<Cognitive Services Vision API URL (eg. https://southcentralus.api.cognitive.microsoft.com/vision/v1.0)>",
+    "MicrosoftVisionNumTags": "10",
+    "gremlin_endpoint": "<DNS of Cosmos DB Gremlin API URL (eg. petpictureanalysisresults.gremlin.cosmosdb.azure.com)>",
+    "gremlin_port": "443",
+    "gremlin_key": "<Cosmos DB (Gremlin API) key>",
+    "KeyVaultUri": "<If you're using keyvault, provide this. If it is blank, Key Vault won't be used>",
+    "AzureSignalRConnectionString": "<Connection String to the SignalR Service instance>"
+  }
+}
