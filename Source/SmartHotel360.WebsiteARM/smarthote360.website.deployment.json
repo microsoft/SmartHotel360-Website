@@ -16,11 +16,15 @@
     },
     "signalr_sku": {
       "type": "string",
-      "defaultValue": "Standard"
+      "defaultValue": "Free_F1"
+    },
+    "signalr_tier": {
+      "type": "string",
+      "defaultValue": "Free"
     },
     "signalr_capacity": {
       "type": "int",
-      "defaultValue": 2
+      "defaultValue": 1
     }
   },
   "variables": {
@@ -169,13 +173,14 @@
     },
     {
       "type": "Microsoft.SignalRService/SignalR",
+      "sku": {
+        "name": "[parameters('signalr_sku')]",
+        "tier": "[parameters('signalr_tier')]",
+        "capacity": "[parameters('signalr_capacity')]"
+      },
       "name": "[variables('signalr_name')]",
       "apiVersion": "2018-03-01-preview",
       "location": "[parameters('location')]",
-      "sku": {
-        "name": "[parameters('signalr_sku')]",
-        "capacity": "[parameters('signalr_capacity')]"
-      },
       "properties": {
         "domainLabel": "[variables('signalr_name')]"
       }
