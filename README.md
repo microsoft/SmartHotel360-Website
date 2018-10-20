@@ -23,12 +23,12 @@ Welcome to the repository containing the website of SmartHotel360. SmartHotel360
 Once downloaded you can open the `SmartHotel360.WebSite.sln` file, located in the Source folder to open the solution in Visual Studio 2017 15.5 or higher. This solution contains three projects:
 
 * The SmartHotel360.Website project: An [ASP.NET Core](www.dot.net) website which is a web app developed using React+Redux and server-side rendering.
-* The SmartHotel360.WebsiteFunction project: An Azure Function used to analyze photos of pets using the Congnitive Services Vision API and Azure Cosmos DB.
+* The SmartHotel360.WebsiteFunction project: An Azure Function used to analyze photos of pets using the Cognitive Services Vision API and Azure Cosmos DB.
 * The SmartHotel360.WebsiteARM project: An Azure Resource Manager template to facilitate the deployment of the different resources you may need in order to deploy the app in your Azure subscription.
 
 # Deploy to Azure
 
-We have added an ARM template so you can automate the resources creation
+We have added an ARM template so you can automate the creation of the resources
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FSmartHotel360-Website%2Fmaster%2FSource%2FSmartHotel360.WebsiteARM%2Fsmarthote360.website.deployment.json?target=_blank" target='_blank'><img src="/Documents/Images/deploy-to-azure.png" alt="Deploy to Azure"/></a>
 
@@ -45,16 +45,16 @@ Set `SmartHotel360.Website` as startup project, then hit F5 to start debugging. 
 
 ## Configuring the website
 
-The file `appsettings.Development.json` contains the settings of the web site. By default following options are used:
+The file `appsettings.Development.json` contains the settings of the website. By default, the following options are used:
 
-* `SettingsUrl`: Url of the configuration endpoint. By default it uses the public endpoint service. Only change if you are running your own backend services.
+* `SettingsUrl`: Url of the configuration endpoint. By default, it uses the public endpoint service. Only change if you are running your own backend services.
 * `FakeAuth`: Contains data to "simulate" the login process. Data is `Name` (name of the user), `UserId` (id of the user), `PicUrl` (url of the user avatar).
 
 > If `FakeAuth` is **not set** the PublicWeb site uses an Azure Active Directory B2C to enable the logins. Please read "[Enabling B2C logins](./Documents/Images/B2C.md)" if you want to use B2C logins.
 
 If you want to deploy this application to your own Azure subscription, see [this setup guide](./Documents/AzureDeployment.md) for instructions. 
 
-# Running the Pet Checker Azure Funcion
+# Running the Pet Checker Azure Function
 
 You can [run the Azure Function locally or deploy it to Azure](./Documents/AzureFunction.md)
 
