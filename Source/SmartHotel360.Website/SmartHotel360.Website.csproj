@@ -51,7 +51,7 @@
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
   </Target>
 
-<!--
+
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
@@ -61,10 +61,10 @@
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)\build\**; $(SpaRoot)\build-ssr\**" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
-        <RelativePath>wwwroot\%(DistFiles.Identity)</RelativePath>
+        <RelativePath>wwwroot\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
--->
+
 </Project>
