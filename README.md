@@ -32,34 +32,27 @@ We have added an ARM template so you can automate the creation of the resources
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FSmartHotel360-Website%2Fmaster%2FSource%2FSmartHotel360.WebsiteARM%2Fsmarthote360.website.deployment.json?target=_blank" target='_blank'><img src="/Documents/Images/deploy-to-azure.png" alt="Deploy to Azure"/></a>
 
-## Screens
-<img src="./Documents/Images/screen2.png" Height="350" />
-<img src="./Documents/Images/screen4.png" Height="350" />
-<img src="./Documents/Images/screen3.png" Height="350" />
-<img src="./Documents/Images/screen1.png" Height="350" />
-<img src="./Documents/Images/screen5.png" Height="350" />
-
-## Running the website
+## Running The Website
 
 Set `SmartHotel360.Website` as startup project, then hit F5 to start debugging. The web is configured to use the public endpoints for the backend, so you don't need to run the backend locally. 
 
-## Configuring the website
+## Configuring The Website
 
 The file `appsettings.Development.json` contains the settings of the website. By default, the following options are used:
 
 * `SettingsUrl`: Url of the configuration endpoint. By default, it uses the public endpoint service. Only change if you are running your own backend services.
 * `FakeAuth`: Contains data to "simulate" the login process. Data is `Name` (name of the user), `UserId` (id of the user), `PicUrl` (url of the user avatar).
 
-> If `FakeAuth` is **not set** the PublicWeb site uses an Azure Active Directory B2C to enable the logins. Please read "[Enabling B2C logins](./Documents/Images/B2C.md)" if you want to use B2C logins.
+> If `FakeAuth` is **not set** the Website site uses an Azure Active Directory B2C to enable the logins. Please read "[Enabling B2C logins](Documents/B2C.md)" if you want to use B2C logins.
 
-If you want to deploy this application to your own Azure subscription, see [this setup guide](./Documents/AzureDeployment.md) for instructions. 
+If you want to deploy this application to your own Azure subscription, see [this setup guide](Documents/AzureDeployment.md) for instructions. 
 
 # Running the Pet Checker Azure Function
 
-You can [run the Azure Function locally or deploy it to Azure](./Documents/AzureFunction.md)
+You can [run the Azure Function locally or deploy it to Azure](Documents/AzureFunction.md)
 
 # Demo Scripts
-There is a detailed step-by-step demo script in the [demoscripts](./Documents/DemoScripts) folder of this repo that you can use in your own presentations. In order to perform the demos, you will need to deploy the application resources to Azure first.
+There is a detailed step-by-step demo script in the [demoscripts](Documents/DemoScripts) folder of this repo that you can use in your own presentations. In order to perform the demos, you will need to deploy the application resources to Azure first.
 
 # Contributing
 

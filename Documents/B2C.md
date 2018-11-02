@@ -10,21 +10,10 @@ To deploy the web in Azure you can use the _Publish_ button from VS2017 to deplo
 
 If you deploy the public web in your own App Service be sure to activate the `FakeAuth` because you won't be able to use Azure B2C to login (the redirect url of your own app service won't be in B2C):
 
-![fake auth](./fakeauth-settings.png)
+![fake auth](Images/fakeauth-settings.png)
 
 ## Running the public web site
 
-There are **two versions of the public web site**.
+B2C forces the web to use https (which is **NOT** bad), but if you access the web using https, ajax calls to backend services must be performed using https (to avoid broswer security errors). Public backend is located in a Kubernetes cluster, this cluster is configured to accept both HTTP and HTTPS connections, but **SSL certificate used is not emited from one custom CA**. That means that if you try to access the public backend API you'll receive an error (INVALID_CERT) because SSL certificate is not recognized from your browser (the CA is not recognized).
 
-* `http://smarthotel360public.azurewebsites.net/` which has FakeAuth enabled **and MUST be accessed using http (NOT https)**
-* `https://smarthotel360public-b2c.azurewebsites.net/` which has FakeAuth disabled (thus uses B2C) **and MUST be accessed using https (NOT plain http)**
-
-> We recommend to use the first one, use the second one only if you want to test the B2C
-
-B2C forces the web to use https (which is **NOT** bad), but if you access the web using https, ajax calls to backend services must be performed using https (to avoid broswer security errors). Public backend is located in a Kubernetes cluster running at _sh360services-public.eastus2.cloudapp.azure.com_. This cluster is configured to accept both HTTP and HTTPS connections, but **SSL certificate used is not emited from one custom CA**. That means that if you try to access the public backend API you'll receive an error (INVALID_CERT) because SSL certificate is not recognized from your browser (the CA is not recognized).
-
-If you want to use the public web site under https (to use B2C) you **must install the CA Root certificate** in your computer. Once certificate is installed, your browser will trust the CA, so it will trust the certificate and the HTTPS connections could be used. To trust the CA just run open a command prompt with administrative rights, go to `/cert-ca` folder and tun the `install_ca.cmd` file. Then restart your browser.
-
-To check the CA certificate is installed open "certificate managmer" (certmgr.exe) and look for the "Connect 2017" certificate under "Local Computer -> Trusted Root Certificate Authorities -> Certificates".
-
-![cheking CA certificate installed](./ca-installed.png)
+If you want to use the public web site under https (to use B2C) you **must install the CA Root certificate** in your computer. Once certificate is installed, your browser will trust the CA, so it will trust the certificate and the HTTPS connections could be used.
