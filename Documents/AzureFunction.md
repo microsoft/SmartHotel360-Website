@@ -18,6 +18,16 @@ Open the solution `SmartHotel360.Website.sln` and open the project `SmartHotel36
 
 You can deploy these resources automatically with the [Azure Deployment Guide.](AzureDeployment.md#Creating-The-Azure-Resources)
 
+Once the resources are created you need to do some manual steps:
+
+1. Create a blob storage container called `pets` in the storage account and ensure it has public access
+
+![Public Blob Storage](./Images/blob.png)
+
+2. [Create a database](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-dotnet#add-a-collection) called `pets` in Cosmos DB. Then add a collection called `checks`.
+
+![Cosmos DB Collection](./Images/collection.png)
+
 ## Deploy to Azure
 
 To deploy the Azure Function just publish it from Visual Studio following the instructions in the "Publish to Azure" section of the [Azure Function Documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs).
