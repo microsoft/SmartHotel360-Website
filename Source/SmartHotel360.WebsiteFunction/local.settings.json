@@ -10,5 +10,8 @@
     "MicrosoftVisionApiEndpoint": "<Cognitive Services Vision API URL (eg. https://southcentralus.api.cognitive.microsoft.com/vision/v1.0)>",
     "MicrosoftVisionNumTags": "10",
     "AzureSignalRConnectionString": "<Connection String to the SignalR Service instance>"
+  },
+  "Host": {
+    "CORS": "*"
   }
 }
