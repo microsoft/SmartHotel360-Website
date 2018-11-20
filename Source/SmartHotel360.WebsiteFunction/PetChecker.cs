@@ -1,5 +1,3 @@
-using Gremlin.Net.Driver;
-using Gremlin.Net.Structure.IO.GraphSON;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -55,8 +53,6 @@ namespace PetCheckerFunction
                         doc.Message = message;
                         log.Info($"--- Updating CosmosDb document to have historical data");
                         await UpsertDocument(doc, log);
-                        log.Info($"--- Updating Graph");
-                        await InsertInGraph(tags, doc, log);
                         log.Info("--- Sending SignalR response.");
                         sendingResponse = true;
                         await SendSignalRResponse(sender, allowed, message);
@@ -98,61 +94,6 @@ namespace PetCheckerFunction
             });
 
         }
-
-        private static async Task InsertInGraph(IEnumerable<string> tags, dynamic doc, TraceWriter log)
-        {
-            var hostname = await GetSecret("gremlin_endpoint");
-            var port = await GetSecret("gremlin_port");
-            var database = "pets";
-            var collection = "checks";
-            var authKey = Environment.GetEnvironmentVariable("gremlin_key");
-            var portToUse = 443;
-            portToUse = int.TryParse(port, out portToUse) ? portToUse : 443;
-
-            var gremlinServer = new GremlinServer(hostname, portToUse, enableSsl: true,
-                                                username: "/dbs/" + database + "/colls/" + collection,
-                                                password: authKey);
-            var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
-            foreach (var tag in tags)
-            {
-                log.Info("--- --- Checking vertex for tag " + tag);
-                await TryAddTag(gremlinClient, tag, log);
-            }
-
-            var queries = AddPetToGraphQueries(doc, tags);
-            log.Info("--- --- Adding vertex for pet checkin ");
-            foreach (string query in queries)
-            {
-                await gremlinClient.SubmitAsync<dynamic>(query);
-            }
-        }
-
-        private static async Task TryAddTag(GremlinClient gremlinClient, string tag, TraceWriter log)
-        {
-            var query = $"g.V('{tag}')";
-            var response = await gremlinClient.SubmitAsync<dynamic>(query);
-
-            if (!response.Any())
-            {
-                log.Info("--- --- Adding vertex for tag " + tag);
-                await gremlinClient.SubmitAsync<dynamic>(AddTagToGraphQuery(tag));
-            }
-        }
-
-        private static IEnumerable<string> AddPetToGraphQueries(dynamic doc, IEnumerable<string> tags)
-        {
-            var id = doc.id.ToString();
-
-            var msg = (doc.Message?.ToString() ?? "").Replace("'", "\'");
-
-            yield return $"g.addV('checkin').property('id','{id}').property('description','{msg}')";
-            foreach (var tag in tags)
-            {
-                yield return $"g.V('{id}').addE('seems').to(g.V('{tag}'))";
-            }
-        }
-
-        private static string AddTagToGraphQuery(string tag) => $"g.addV('tag').property('id', '{tag}').property('value', '{tag}')";
 
         private static async Task UpsertDocument(dynamic doc, TraceWriter log)
         {
