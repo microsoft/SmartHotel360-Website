@@ -7,16 +7,16 @@
     <None Remove="lib\Microsoft.ProjectOxford.Vision.dll" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.1.0-preview" />    
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.23" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.CosmosDB" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.1" />
-    <PackageReference Include="AzureAdvocates.WebJobs.Extensions.SignalRService" Version="0.3.0-alpha-hotfix1" />    
+    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.SignalRService" Version="1.0.0-preview1-10025" />    
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.24" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.CosmosDB" Version="3.0.3" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.3" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ProjectOxford.Vision">
       <HintPath>lib\Microsoft.ProjectOxford.Vision.dll</HintPath>
-    </Reference>
+    </Reference>   
   </ItemGroup>
   <ItemGroup>
     <None Update="local.settings.json">

@@ -24,9 +24,11 @@ Once the resources are created you need to do some manual steps:
 
 ![Public Blob Storage](./Images/blob.png)
 
-2. [Create a database](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-dotnet#add-a-collection) called `pets` in Cosmos DB. Then add a collection called `checks`.
+2. [Create a database](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-dotnet#add-a-collection) called `pets` in Cosmos DB. Then add two collection, one called `checks` and other called `leases`.
 
-![Cosmos DB Collection](./Images/collection.png)
+![Cosmos DB Collection](./Images/collection1.jpg)
+
+![Cosmos DB Collection](./Images/collection2.jpg)
 
 ## Deploy to Azure
 
