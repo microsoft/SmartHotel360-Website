@@ -26,7 +26,7 @@ Once the resources are created you need to do some manual steps:
 
 2. [Create a database](https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-dotnet#add-a-collection) called `pets` in Cosmos DB. Then add a collection called `checks`.
 
-![Cosmos DB Collection](Images/collection.png)
+![Cosmos DB Collection](Images/collection1.png)
 
 ## Setting Up The Website with the Function
 
