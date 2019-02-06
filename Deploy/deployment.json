@@ -4,39 +4,27 @@
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "West US 2"
-    },
-    "serviceplan_sku": {
-      "type": "string",
-      "defaultValue": "Standard"
-    },
-    "serviceplan_sku_code": {
-      "type": "string",
-      "defaultValue": "S1"
-    },
-    "signalr_sku": {
-      "type": "string",
-      "defaultValue": "Free_F1"
-    },
-    "signalr_tier": {
-      "type": "string",
-      "defaultValue": "Free"
-    },
-    "signalr_capacity": {
-      "type": "int",
-      "defaultValue": 1
+      "defaultValue": "West US"
     }
   },
   "variables": {
-    "cosmosdb_name": "[concat('websitecosmosdb-',uniqueString(resourceGroup().id))]",
-    "function_name": "[concat('websitefunction-',uniqueString(resourceGroup().id))]",
-    "storage_name": "[concat('storage',uniqueString(resourceGroup().id))]",
-    "vision_name": "[concat('websitevisionapi-',uniqueString(resourceGroup().id))]",
+    "cosmosdb_name": "[concat('websitecosmosdb',uniqueString(resourceGroup().id))]",
+    "function_name": "[concat('webfunction',uniqueString(resourceGroup().id))]",
+    "storage_name": "[concat('webstorage',uniqueString(resourceGroup().id))]",
+    "vision_name": "[concat('webvisionapi',uniqueString(resourceGroup().id))]",
     "website_name": "[concat('smarthotel360',uniqueString(resourceGroup().id))]",
-    "serviceplan_name": "[concat('appserviceplan',uniqueString(resourceGroup().id))]",
-    "signalr_name": "[concat('websitesignalr-',uniqueString(resourceGroup().id))]"
+    "signalr_name": "[concat('websignalr',uniqueString(resourceGroup().id))]"
   },
   "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storage_name')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    },
     {
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "kind": "GlobalDocumentDB",
@@ -56,6 +44,19 @@
         },
         "name": "[variables('cosmosdb_name')]"
       }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "ComputerVision",
+      "name": "[variables('vision_name')]",
+      "apiVersion": "2016-02-01-preview",
+      "location": "[parameters('location')]",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
     },
     {
       "type": "Microsoft.Web/sites",
@@ -101,28 +102,6 @@
       ]
     },
     {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storage_name')]",
-      "apiVersion": "2015-05-01-preview",
-      "location": "[parameters('location')]",
-      "properties": {
-        "accountType": "Standard_LRS"
-      }
-    },
-    {
-      "type": "Microsoft.CognitiveServices/accounts",
-      "sku": {
-        "name": "F0"
-      },
-      "kind": "ComputerVision",
-      "name": "[variables('vision_name')]",
-      "apiVersion": "2016-02-01-preview",
-      "location": "[parameters('location')]",
-      "scale": null,
-      "properties": {},
-      "dependsOn": []
-    },
-    {
       "type": "Microsoft.Web/sites",
       "name": "[variables('website_name')]",
       "apiVersion": "2016-03-01",
@@ -139,24 +118,8 @@
         "name": "[variables('website_name')]"
       },
       "dependsOn": [
-        "[concat('Microsoft.Web/serverfarms/', variables('serviceplan_name'))]",
         "[resourceId('microsoft.insights/components/', variables('website_name'))]"
       ]
-    },
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "sku": {
-        "Tier": "[parameters('serviceplan_sku')]",
-        "Name": "[parameters('serviceplan_sku_code')]"
-      },
-      "name": "[variables('serviceplan_name')]",
-      "apiVersion": "2016-09-01",
-      "location": "[parameters('location')]",
-      "properties": {
-        "name": "[variables('serviceplan_name')]",
-        "workerSizeId": "0",
-        "numberOfWorkers": "1"
-      }
     },
     {
       "type": "microsoft.insights/components",
@@ -174,9 +137,9 @@
     {
       "type": "Microsoft.SignalRService/SignalR",
       "sku": {
-        "name": "[parameters('signalr_sku')]",
-        "tier": "[parameters('signalr_tier')]",
-        "capacity": "[parameters('signalr_capacity')]"
+        "name": "Free_F1",
+        "tier": "Free",
+        "capacity": 1
       },
       "name": "[variables('signalr_name')]",
       "apiVersion": "2018-03-01-preview",
