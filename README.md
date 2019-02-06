@@ -62,7 +62,7 @@ The file `appsettings.Development.json` contains the settings of the website. By
 * `SettingsUrl`: URL of the configuration endpoint. By default, it uses the public endpoint service. Change this value if you have deployed the [Backend Services](https://github.com/Microsoft/SmartHotel360-Backend) and want to use your own backend.
 * `FakeAuth`: Contains data to "simulate" the login process. Data is `Name` (name of the user), `UserId` (id of the user), `PicUrl` (URL of the user avatar).
 
-> If `FakeAuth` is **not set** the Website will use an [Azure Active Directory B2C]https://github.com/Microsoft/SmartHotel360-Website#enabling-azure-ad-b2c-optional) to enable the logins.
+> If `FakeAuth` is **not set** the Website will use an [Azure Active Directory B2C](https://github.com/Microsoft/SmartHotel360-Website#enabling-azure-ad-b2c-optional) to enable the logins.
 
 If you want to run or deploy the Azure Function to enable the Pet Checker feature open the file `appsettings.Development.json` or `appsettings.Production.json` according to your Build configuration, `Production` if you are using a `Release` configuration or `Development` if you are using a `Debug` configuration. Then edit the `PetsConfig` section with the following entries:
 
