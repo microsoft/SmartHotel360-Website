@@ -36,6 +36,8 @@ We have added an ARM template so you can automate the creation of the resources
 
 Set `SmartHotel360.Website` as startup project, then hit F5 to start debugging. The web is configured to use the public endpoints for the backend, so you don't need to run the backend locally. 
 
+> Note: you will need to have installed [NodeJS](https://nodejs.org) to run the website locally.
+
 ## Configuring The Website
 
 The file `appsettings.Development.json` contains the settings of the website. By default, the following options are used:
