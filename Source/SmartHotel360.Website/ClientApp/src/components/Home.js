@@ -21,13 +21,19 @@ class Home extends Component {
                     <div className='sh-hero-title'>The future of intelligent hospitality and connected workplace</div>
                     <ul className='sh-hero-buttons'>
                         <li className='sh-hero-button'>
-                            <div className='sh-hero-download_app sh-hero-download_app--win'></div>
+                            <a href="https://aka.ms/smarthotel360uwp">
+                                <div className='sh-hero-download_app sh-hero-download_app--win'></div>
+                            </a>
                         </li>
                         <li className='sh-hero-button'>
-                            <div className='sh-hero-download_app sh-hero-download_app--apple'></div>
+                            <a href="https://aka.ms/smarthotel360ios">
+                                <div className='sh-hero-download_app sh-hero-download_app--apple'></div>
+                            </a>
                         </li>
                         <li className='sh-hero-button'>
-                            <div className='sh-hero-download_app sh-hero-download_app--google'></div>
+                            <a href="https://aka.ms/smarthotel360android">
+                                <div className='sh-hero-download_app sh-hero-download_app--google'></div>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -88,7 +94,7 @@ class Home extends Component {
             <span className='sh-home-label'>For Business travelers</span>
             <span className='sh-home-title'>Smart Conference Room</span>
             <ConferenceRoomsFeatures />
-            
+
             <section className='sh-smartphone'>
                 <div className='sh-smartphone-wrapper'>
                     <h2 className='sh-smartphone-title'>Discover the full smart experience with your smartphone</h2>
