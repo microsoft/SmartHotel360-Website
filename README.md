@@ -19,6 +19,8 @@ For this reference app scenario, we built several consumer and line-of-business 
 # SmartHotel360 - Website
 Welcome to the repository containing the website of SmartHotel360. SmartHotel360 has multiple apps that share a common backend, including a public website where hotel guests can book a room, smart conference rooms, and even verify if their pets are allowed in the hotel.
 
+[![Build status](https://dev.azure.com/smarthotel360/Website/_apis/build/status/Website-CI)](https://dev.azure.com/smarthotel360/Website/_build/latest?definitionId=28)
+
 ![SmartHotel360 Home Page](Documents/Images/screen1.png)
 ![SmartHotel360 Home Page](Documents/Images/screen2.png)
 
