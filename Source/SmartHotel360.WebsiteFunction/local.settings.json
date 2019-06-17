@@ -11,5 +11,8 @@
     "MicrosoftVisionNumTags": "10",
     "AzureSignalRConnectionString": "<Connection String to the SignalR Service instance>",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+  },
+  "Host": {
+    "CORS": "*"
   }
 }

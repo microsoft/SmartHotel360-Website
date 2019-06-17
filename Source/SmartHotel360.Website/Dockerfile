@@ -3,8 +3,9 @@ WORKDIR /app
 EXPOSE 80
 
 FROM microsoft/dotnet:2.2.100-preview1-sdk-alpine AS build
+ENV BuildingDocker true
 WORKDIR /src
-COPY SmartHotel360.PublicWeb.csproj .
+COPY SmartHotel360.Website.csproj .
 RUN dotnet restore
 COPY . .
 RUN dotnet build -c Release -o /webapp
@@ -28,4 +29,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /webapp .
 COPY --from=node /src/wwwroot ./wwwroot
-ENTRYPOINT ["dotnet", "SmartHotel360.PublicWeb.dll"]
+ENTRYPOINT ["dotnet", "SmartHotel360.Website.dll"]
