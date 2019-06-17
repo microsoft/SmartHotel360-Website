@@ -62,7 +62,7 @@
       "type": "Microsoft.Web/sites",
       "kind": "functionapp",
       "name": "[variables('function_name')]",
-      "apiVersion": "2016-03-01",
+      "apiVersion": "2016-08-01",
       "location": "[parameters('location')]",
       "properties": {
         "name": "[variables('function_name')]",
@@ -92,7 +92,10 @@
               "name": "WEBSITE_NODE_DEFAULT_VERSION",
               "value": "8.11.1"
             }
-          ]
+          ],
+          "cors": {
+            "allowedOrigins": ["*"]
+          }
         },
         "clientAffinityEnabled": false,
         "reserved": false
