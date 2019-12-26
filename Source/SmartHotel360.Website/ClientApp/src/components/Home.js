@@ -18,7 +18,7 @@ class Home extends Component {
         return <div className='sh-home'>
             <div className='sh-hero'>
                 <div className='sh-hero-wrapper'>
-                    <div className='sh-hero-title'>The future of intelligent hospitality and connected workplace</div>
+                    <div className='sh-hero-title'>Azure DevOps PoC 1</div>
                     <div className='sh-hero-subtitle'>Download the App</div>
                     <ul className='sh-hero-buttons'>
                         <li className='sh-hero-button'>
