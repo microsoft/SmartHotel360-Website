@@ -1,3 +1,7 @@
+# **The project SmartHotel360 have been retired, we have archived it. It is no longer maintained. You still can fork the repository.**
+
+## For the latest sample references visit: https://aka.ms/tailwindtraders & https://aka.ms/rpsls 
+
 # SmartHotel360
 
 We are happy to announce the release of SmartHotel360. This release intends to share a simplified version of SmartHotel360 reference sample apps used at Connect(); 2017 Keynotes. If you missed it, you can watch <a href="https://channel9.msdn.com/Events/Connect/2017/K100">Scott Guthrie’s Keynote: Journey to the Intelligent Cloud in Channel 9</a>.
